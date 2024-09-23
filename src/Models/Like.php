@@ -1,6 +1,6 @@
 <?php
 
-namespace CSlant\Like\Models;
+namespace CSlant\LaravelLike\Models;
 
 class Like
 {

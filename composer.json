@@ -25,12 +25,12 @@
   ],
   "autoload": {
     "psr-4": {
-      "CSlant\\Laravel\\Like\\": "src/"
+      "CSlant\\LaravelLike\\": "src/"
     }
   },
   "autoload-dev": {
     "psr-4": {
-      "CSlant\\Laravel\\Like\\Tests\\": "tests/"
+      "CSlant\\LaravelLike\\Tests\\": "tests/"
     }
   },
   "require": {
@@ -57,7 +57,7 @@
   "extra": {
     "laravel": {
       "providers": [
-        "CSlant\\Laravel\\Like\\Providers\\LikeServiceProvider"
+        "CSlant\\LaravelLike\\Providers\\LikeServiceProvider"
       ]
     }
   },
