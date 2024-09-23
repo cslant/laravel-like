@@ -23,7 +23,7 @@ class LikeServiceProvider extends ServiceProvider
      */
     public function register(): void
     {
-        //
+        $this->registerConfigs();
     }
 
     /**
@@ -44,5 +44,16 @@ class LikeServiceProvider extends ServiceProvider
     public function registerMigration(): void
     {
         $this->loadMigrationsFrom(__DIR__.'/../../migrations');
+    }
+
+    /**
+     * Register configs.
+     *
+     * @return void
+     */
+    protected function registerConfigs(): void
+    {
+        $configPath = __DIR__.'/../../config/like.php';
+        $this->mergeConfigFrom($configPath, 'like');
     }
 }
