@@ -13,7 +13,6 @@ class LikeServiceProvider extends ServiceProvider
      */
     public function boot(): void
     {
-        $this->registerMigration();
         $this->registerAssetsPublishing();
     }
 
@@ -35,16 +34,6 @@ class LikeServiceProvider extends ServiceProvider
     public function provides(): ?array
     {
         return ['like'];
-    }
-
-    /**
-     * Register the package's migrations.
-     *
-     * @return void
-     */
-    public function registerMigration(): void
-    {
-        $this->loadMigrationsFrom(__DIR__.'/../../migrations');
     }
 
     /**

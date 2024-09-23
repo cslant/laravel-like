@@ -19,10 +19,10 @@ return new class extends Migration
             }
 
             $table->unsignedBigInteger(config('like.user_foreign_key'))->index();
-            $table->morphs('likeable');
+            $table->morphs('model');
             $table->string('type')->default('like');
 
-            $table->unique(['user_id', 'model_id', 'model_type', 'type']);
+            $table->unique(['user_id', 'model_id', 'model_type', 'type'], 'unique_likes');
 
             $table->timestamps();
         });
