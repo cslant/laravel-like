@@ -6,6 +6,8 @@ parameters:
     paths:
         - src
         - tests
+    parallel:
+        maximumNumberOfProcesses: 4
     tmpDir: build/phpstan
     checkOctaneCompatibility: true
     checkModelProperties: true
