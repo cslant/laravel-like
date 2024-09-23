@@ -11,10 +11,10 @@ composer require cslant/laravel-like
 
 ## Configuration and Migrations
 
-You can publish the configuration file with:
+You can publish all the necessary configuration and migration files by running the following command:
 
 ```bash
-php artisan vendor:publish --provider="Cslant\LaravelLike\LikeServiceProvider"
+php artisan vendor:publish --provider="CSlant\LaravelLike\LikeServiceProvider"
 ```
 
 After the configuration file has been published, you can run the migration:

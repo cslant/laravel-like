@@ -13,9 +13,16 @@ return new class extends Migration
     {
         Schema::create('likes', function (Blueprint $table) {
             $table->id();
-            $table->uuid();
-            $table->unsignedBigInteger('user_id');
+
+            if (config('like.is_uuids')) {
+                $table->uuid()->index();
+            }
+
+            $table->unsignedBigInteger(config('like.user_foreign_key'))->index();
             $table->morphs('likeable');
+            $table->string('type')->default('like');
+
+            $table->unique(['user_id', 'model_id', 'model_type', 'type']);
 
             $table->timestamps();
         });
