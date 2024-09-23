@@ -11,11 +11,11 @@ class Like extends Model
         'user_id',
         'model_id',
         'model_type',
-        'type'
+        'type',
     ];
 
     protected $casts = [
         'model_type' => 'string',
-        'type' => LikeTypeEnum::class
+        'type' => LikeTypeEnum::class,
     ];
 }

@@ -35,7 +35,6 @@ trait HasLike
         return $this->morphMany(Like::class, 'model');
     }
 
-
     /**
      * The scope locale for select likes relationship.
      *
