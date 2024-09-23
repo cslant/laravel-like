@@ -1,0 +1,30 @@
+# ==== Commit Messages ====
+
+# ==== Commit Messages(Template) ====
+# <type>: <subject>
+# fix: Fixed a bug in the code
+# hotfix: Fixed a critical bug in the code
+# feat: Added new feature
+# docs: Added documentation
+# style: Updated code style
+# refactor(clean,improve): Cleaned up code, improved code quality
+# test: Added tests
+# chore: Updated build tasks, package manager configs, etc
+#
+# ==== Emojis ====
+# 🐛 :bug: Bug fix
+# 👍 :+1: Functionality improvement
+# ✨ :sparkles: Partial feature addition
+# 🎨 :art: Design change only
+# 💢 :anger: Conflict
+# 🚧 :construction: WIP
+# 📝 :memo: Wording correction
+# ♻️ :recycle: Refactoring
+# 🔥 :fire: Removal of unnecessary and unused features
+# 💚 :green_heart: Test and CI corrections and improvements
+# 👕 :shirt: Lint error corrections and code style corrections
+# 🚀 :rocket: Performance improvement
+# 🆙 :up: Update of dependent packages, etc.
+# 👮 :cop: Security-related improvements
+# ⚙  :gear: Config change
+# 📚 :books: Documentation
