@@ -41,6 +41,10 @@ jobs:
       - name: Install dependencies
         run: |
           composer install --no-interaction --no-progress
-      - name: Run tests
+      - name: Run composer validate
         run: |
           composer validate --strict
+
+      - name: Run tests
+        run: |
+          composer test
