@@ -15,11 +15,7 @@ use Illuminate\Database\Eloquent\Model;
  */
 trait HasLike
 {
-    use LikeRelationship, LikeScopes {
-        LikeRelationship::likes insteadof LikeScopes;
-        LikeRelationship::likeOne insteadof LikeScopes;
-        LikeScopes::likes as likesScope;
-        LikeScopes::likeOne as likeOneScope;
-    }
+    use LikeRelationship;
+    use LikeScopes;
     use LikeCount;
 }
