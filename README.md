@@ -1,6 +1,15 @@
 # laravel-like
 User 👍 like and 👎 dislike features for Laravel Application.
 
+<p align="center">
+<a href="#"><img src="https://img.shields.io/github/license/cslant/laravel-like.svg?style=flat-square" alt="License"></a>
+<a href="https://github.com/cslant/laravel-like/releases"><img src="https://img.shields.io/github/release/cslant/laravel-like.svg?style=flat-square" alt="Latest Version"></a>
+<a href="https://packagist.org/packages/cslant/laravel-like"><img src="https://img.shields.io/packagist/dt/cslant/laravel-like.svg?style=flat-square" alt="Total Downloads"></a>
+<a href="https://github.com/cslant/laravel-like/actions/workflows/setup_test.yml"><img src="https://img.shields.io/github/actions/workflow/status/cslant/laravel-like/setup_test.yml?label=tests&branch=main" alt="Test Status"></a>
+<a href="https://github.com/cslant/laravel-like/actions/workflows/php-cs-fixer.yml"><img src="https://img.shields.io/github/actions/workflow/status/cslant/laravel-like/php-cs-fixer.yml?label=code%20style&branch=main" alt="Code Style Status"></a>
+<a href="https://scrutinizer-ci.com/g/cslant/laravel-like"><img src="https://img.shields.io/scrutinizer/g/cslant/laravel-like.svg?style=flat-square" alt="Quality Score"></a>
+</p>
+
 ## 📝 Introduction
 
 This package provides a simple way to add like 👍, dislike 👎, and love ❤️ or unlike 🤚 features to your Laravel application.
@@ -14,7 +23,7 @@ It is easy to use and can be customized to fit your needs.
 
 ## 🔧 Installation
 
-You can install the package via composer:
+You can install the package via Composer:
 
 ```bash
 composer require cslant/laravel-like
