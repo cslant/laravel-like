@@ -12,6 +12,8 @@ use Illuminate\Database\Eloquent\Relations\MorphOne;
  *
  * @package CSlant\LaravelLike\Traits
  * @mixin Model
+ *
+ * @method MorphOne morphOne(string $related, string $name, string $type = null, string $id = null, string $localKey = null)
  */
 trait LikeRelationship
 {
