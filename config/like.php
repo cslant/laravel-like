@@ -2,9 +2,6 @@
 
 return [
     'name' => 'Like',
-    'models' => [
-        'like' => \CSlant\LaravelLike\Models\Like::class,
-    ],
 
     /*
      * The flag to determine if the likes table should use UUIDs.
