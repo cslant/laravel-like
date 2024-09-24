@@ -33,16 +33,6 @@ trait LikeCount
     }
 
     /**
-     * Get the count of loves.
-     *
-     * @return int
-     */
-    public function lovesCount(): int
-    {
-        return $this->lovesTo()->count();
-    }
-
-    /**
      * Get digital count.
      *
      * @param $count
