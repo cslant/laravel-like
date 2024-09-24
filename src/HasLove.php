@@ -29,4 +29,14 @@ trait HasLove
     {
         return $this->lovesTo()->count();
     }
+
+    /**
+     * Get the count of loves in digital format.
+     *
+     * @return string
+     */
+    public function lovesCountDigital(): string
+    {
+        return count_digital($this->lovesCount());
+    }
 }

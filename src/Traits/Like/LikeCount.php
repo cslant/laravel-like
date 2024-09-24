@@ -37,33 +37,13 @@ trait LikeCount
     }
 
     /**
-     * Get digital count.
-     *
-     * @param $count
-     *
-     * @return string
-     */
-    public function countDigital($count): string
-    {
-        if ($count < 1000) {
-            return $count;
-        }
-
-        if ($count < 1000000) {
-            return round($count / 1000, 1) . 'K';
-        }
-
-        return round($count / 1000000, 1) . 'M';
-    }
-
-    /**
      * Get the count of likes in digital format.
      *
      * @return string
      */
     public function likesCountDigital(): string
     {
-        return $this->countDigital($this->likesCount());
+        return count_digital($this->likesCount());
     }
 
     /**
@@ -73,6 +53,6 @@ trait LikeCount
      */
     public function dislikesCountDigital(): string
     {
-        return $this->countDigital($this->dislikesCount());
+        return count_digital($this->dislikesCount());
     }
 }
