@@ -1,6 +1,6 @@
 <?php
 
-namespace CSlant\LaravelLike\Traits;
+namespace CSlant\LaravelLike\Traits\Like;
 
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\MorphMany;
@@ -8,7 +8,7 @@ use Illuminate\Database\Eloquent\Relations\MorphMany;
 /**
  * Trait LikeCount
  *
- * @package CSlant\LaravelLike\Traits
+ * @package CSlant\LaravelLike\Traits\Like
  * @mixin Model
  *
  * @method MorphMany likesTo()

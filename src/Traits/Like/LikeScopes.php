@@ -1,6 +1,6 @@
 <?php
 
-namespace CSlant\LaravelLike\Traits;
+namespace CSlant\LaravelLike\Traits\Like;
 
 use CSlant\LaravelLike\Enums\LikeTypeEnum;
 use Illuminate\Database\Eloquent\Model;
@@ -10,7 +10,7 @@ use Illuminate\Database\Eloquent\Relations\MorphOne;
 /**
  * Trait LikeScopes
  *
- * @package CSlant\LaravelLike\Traits
+ * @package CSlant\LaravelLike\Traits\Like
  * @mixin Model
  *
  * @method MorphOne likeOne()
