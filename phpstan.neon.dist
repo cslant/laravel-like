@@ -6,6 +6,7 @@ parameters:
     paths:
         - src
         - tests
+        - common
     parallel:
         maximumNumberOfProcesses: 4
     tmpDir: build/phpstan

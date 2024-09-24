@@ -4,11 +4,11 @@ if (!function_exists('count_digital')) {
     /**
      * Get digital count.
      *
-     * @param $count
+     * @param  int  $count
      *
-     * @return string
+     * @return int|string
      */
-    function count_digital($count): string
+    function count_digital(int $count): int|string
     {
         if ($count < 1000) {
             return $count;
