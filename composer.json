@@ -27,7 +27,10 @@
   "autoload": {
     "psr-4": {
       "CSlant\\LaravelLike\\": "src/"
-    }
+    },
+    "files": [
+      "common/helpers.php"
+    ]
   },
   "autoload-dev": {
     "psr-4": {
