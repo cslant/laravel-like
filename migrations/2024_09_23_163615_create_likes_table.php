@@ -11,7 +11,7 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('likes', function (Blueprint $table) {
+        Schema::create(config('like.table_name'), function (Blueprint $table) {
             $table->id();
 
             if (config('like.is_uuids')) {
@@ -33,6 +33,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('likes');
+        Schema::dropIfExists(config('like.table_name'));
     }
 };

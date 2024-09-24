@@ -15,7 +15,7 @@ return [
     /*
      * The table name for likes records.
      */
-    'likes_table' => 'likes',
+    'table_name' => 'likes',
 
     /*
      * User tables foreign key name.
