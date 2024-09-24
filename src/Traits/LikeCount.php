@@ -3,12 +3,16 @@
 namespace CSlant\LaravelLike\Traits;
 
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\MorphMany;
 
 /**
  * Trait LikeCount
  *
  * @package CSlant\LaravelLike\Traits
  * @mixin Model
+ *
+ * @method MorphMany likesTo()
+ * @method MorphMany dislikesTo()
  */
 trait LikeCount
 {
