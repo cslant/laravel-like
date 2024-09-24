@@ -12,6 +12,9 @@ use Illuminate\Database\Eloquent\Relations\MorphOne;
  *
  * @package CSlant\LaravelLike
  * @mixin Model
+ *
+ * @method MorphOne likeOne()
+ * @method MorphMany likes()
  */
 trait HasLove
 {
