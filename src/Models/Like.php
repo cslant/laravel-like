@@ -4,7 +4,20 @@ namespace CSlant\LaravelLike\Models;
 
 use CSlant\LaravelLike\Enums\LikeTypeEnum;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Support\Carbon;
 
+/**
+ * Class Like
+ *
+ * @package CSlant\LaravelLike\Models
+ * @property int $id
+ * @property int $user_id
+ * @property int $model_id
+ * @property string $model_type
+ * @property LikeTypeEnum $type
+ * @property Carbon $created_at
+ * @property Carbon $updated_at
+ */
 class Like extends Model
 {
     /**
@@ -28,4 +41,19 @@ class Like extends Model
         'model_type' => 'string',
         'type' => LikeTypeEnum::class,
     ];
+
+    public function isLiked(): bool
+    {
+        return $this->type->isLike();
+    }
+
+    public function isDisliked(): bool
+    {
+        return $this->type->isDislike();
+    }
+
+    public function isLove(): bool
+    {
+        return $this->type->isLove();
+    }
 }
