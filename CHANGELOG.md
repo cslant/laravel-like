@@ -7,7 +7,7 @@ Here you can see the full list of changes between each Laravel Like release.
 ### What's Changed
 
 * Refactor Like trait structures
-* Create new count_digital helper function
+* Create new **count_digital** helper function
 * Create new total-like methods for each type (Like, Dislike, Love)
 * Move love into a separate trait
 
