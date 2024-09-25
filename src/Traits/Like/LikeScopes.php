@@ -61,9 +61,9 @@ trait LikeScopes
     /**
      * Implement change like interaction. (like/dislike)
      *
-     * @return bool
+     * @return string
      */
-    public function toggleLikeInteraction(): bool
+    public function toggleLikeInteraction(): string
     {
         if ($this->likeOne->isLiked()) {
             $this->likeOne->type = LikeTypeEnum::DISLIKE;
@@ -71,6 +71,6 @@ trait LikeScopes
             $this->likeOne->type = LikeTypeEnum::LIKE;
         }
 
-        return $this->likeOne->save();
+        return $this->likeOne->type->value;
     }
 }
