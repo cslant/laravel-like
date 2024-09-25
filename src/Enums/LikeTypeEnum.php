@@ -4,6 +4,7 @@ namespace CSlant\LaravelLike\Enums;
 
 enum LikeTypeEnum: string
 {
+    case DEFAULT = 'default';
     case LIKE = 'like';
     case DISLIKE = 'dislike';
     case LOVE = 'love';
