@@ -3,6 +3,7 @@
 namespace CSlant\LaravelLike\Models;
 
 use CSlant\LaravelLike\Enums\LikeTypeEnum;
+use CSlant\LaravelLike\Traits\LikeRelationship;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\Carbon;
 
@@ -44,6 +45,9 @@ class Like extends Model
 
     /**
      * Check if the record is liked.
+     * Use with likeOne() relationship. Can't use with likes() relationship.
+     *
+     * @see LikeRelationship::likeOne()
      *
      * @return bool
      */
@@ -54,6 +58,9 @@ class Like extends Model
 
     /**
      * Check if the record is disliked.
+     * Use with likeOne() relationship. Can't use with likes() relationship.
+     *
+     * @see LikeRelationship::likeOne()
      *
      * @return bool
      */
@@ -64,6 +71,9 @@ class Like extends Model
 
     /**
      * Check if the record is loved.
+     * Use with likeOne() relationship. Can't use with likes() relationship.
+     *
+     * @see LikeRelationship::likeOne()
      *
      * @return bool
      */
