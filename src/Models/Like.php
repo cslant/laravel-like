@@ -42,16 +42,31 @@ class Like extends Model
         'type' => LikeTypeEnum::class,
     ];
 
+    /**
+     * Check if the record is liked.
+     *
+     * @return bool
+     */
     public function isLiked(): bool
     {
         return $this->type->isLike();
     }
 
+    /**
+     * Check if the record is disliked.
+     *
+     * @return bool
+     */
     public function isDisliked(): bool
     {
         return $this->type->isDislike();
     }
 
+    /**
+     * Check if the record is loved.
+     *
+     * @return bool
+     */
     public function isLove(): bool
     {
         return $this->type->isLove();
