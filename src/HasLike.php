@@ -2,9 +2,9 @@
 
 namespace CSlant\LaravelLike;
 
+use CSlant\LaravelLike\Traits\InteractionRelationship;
 use CSlant\LaravelLike\Traits\Like\LikeCount;
 use CSlant\LaravelLike\Traits\Like\LikeScopes;
-use CSlant\LaravelLike\Traits\LikeRelationship;
 use Illuminate\Database\Eloquent\Model;
 
 /**
@@ -15,7 +15,7 @@ use Illuminate\Database\Eloquent\Model;
  */
 trait HasLike
 {
-    use LikeRelationship;
+    use InteractionRelationship;
     use LikeScopes;
     use LikeCount;
 }

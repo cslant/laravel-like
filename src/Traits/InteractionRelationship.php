@@ -8,7 +8,7 @@ use Illuminate\Database\Eloquent\Relations\MorphMany;
 use Illuminate\Database\Eloquent\Relations\MorphOne;
 
 /**
- * Trait LikeRelationship
+ * Trait InteractionRelationship
  *
  * @package CSlant\LaravelLike\Traits
  * @mixin Model
@@ -16,7 +16,7 @@ use Illuminate\Database\Eloquent\Relations\MorphOne;
  * @method MorphOne morphOne(string $related, string $name, string $type = null, string $id = null, string $localKey = null)
  * @method MorphMany morphMany(string $related, string $name, string $type = null, string $id = null, string $localKey = null)
  */
-trait LikeRelationship
+trait InteractionRelationship
 {
     /**
      * Like has one relationship with the model.

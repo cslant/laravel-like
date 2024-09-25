@@ -2,7 +2,7 @@
 
 namespace CSlant\LaravelLike\Traits\Love;
 
-use CSlant\LaravelLike\Enums\LikeTypeEnum;
+use CSlant\LaravelLike\Enums\InteractionTypeEnum;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\MorphMany;
 use Illuminate\Database\Eloquent\Relations\MorphOne;
@@ -25,7 +25,7 @@ trait LoveScope
      */
     public function loveTo(): MorphOne
     {
-        return $this->likeOne()->where('type', LikeTypeEnum::LOVE);
+        return $this->likeOne()->where('type', InteractionTypeEnum::LOVE);
     }
 
     /**
@@ -35,6 +35,6 @@ trait LoveScope
      */
     public function lovesTo(): MorphMany
     {
-        return $this->likes()->where('type', LikeTypeEnum::LOVE);
+        return $this->likes()->where('type', InteractionTypeEnum::LOVE);
     }
 }

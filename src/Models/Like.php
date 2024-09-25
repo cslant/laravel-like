@@ -2,9 +2,24 @@
 
 namespace CSlant\LaravelLike\Models;
 
-use CSlant\LaravelLike\Enums\LikeTypeEnum;
+use CSlant\LaravelLike\Enums\InteractionTypeEnum;
+use CSlant\LaravelLike\Traits\InteractionRelationship;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Query\Builder;
+use Illuminate\Support\Carbon;
 
+/**
+ * Class Like
+ *
+ * @package CSlant\LaravelLike\Models
+ * @property int $id
+ * @property int $user_id
+ * @property int $model_id
+ * @property string $model_type
+ * @property InteractionTypeEnum $type
+ * @property Carbon $created_at
+ * @property Carbon $updated_at
+ */
 class Like extends Model
 {
     /**
@@ -26,6 +41,59 @@ class Like extends Model
      */
     protected $casts = [
         'model_type' => 'string',
-        'type' => LikeTypeEnum::class,
+        'type' => InteractionTypeEnum::class,
     ];
+
+    /**
+     * Check if the record is liked.
+     *
+     * @see InteractionRelationship::likeOne()
+     *
+     * @return bool
+     */
+    public function isLiked(): bool
+    {
+        // Use with likeOne() relationship. Can't use with likes() relationship.
+        return $this->type->isLike();
+    }
+
+    /**
+     * Check if the record is disliked.
+     *
+     * @see InteractionRelationship::likeOne()
+     *
+     * @return bool
+     */
+    public function isDisliked(): bool
+    {
+        // Use with likeOne() relationship. Can't use with likes() relationship.
+        return $this->type->isDislike();
+    }
+
+    /**
+     * Check if the record is loved.
+     *
+     * @see InteractionRelationship::likeOne()
+     *
+     * @return bool
+     */
+    public function isLove(): bool
+    {
+        // Use with likeOne() relationship. Can't use with likes() relationship.
+        return $this->type->isLove();
+    }
+
+    /**
+     * Scope a query to only include records of a given model type.
+     *
+     * @param  Builder  $query
+     * @param  string  $modelType
+     *
+     * @return Builder
+     */
+    public function scopeWithModelType(Builder $query, string $modelType): Builder
+    {
+        // Use with likes() relationship. Can't use with likeOne() relationship.
+        return $query->where('model_type', app($modelType)->getMorphClass());
+    }
 }
