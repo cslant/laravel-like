@@ -19,7 +19,7 @@ use Illuminate\Database\Eloquent\Relations\MorphOne;
 trait LikeScopes
 {
     /**
-     * The scope locale for select like relationship (one).
+     * The scope locale for select like relationship with the model (one).
      *
      * @return MorphOne
      */
@@ -29,7 +29,7 @@ trait LikeScopes
     }
 
     /**
-     * The scope locale for select dislike relationship (one).
+     * The scope locale for select dislike relationship with the model (one).
      *
      * @return MorphOne
      */
@@ -56,5 +56,21 @@ trait LikeScopes
     public function dislikesTo(): MorphMany
     {
         return $this->likes()->where('type', LikeTypeEnum::DISLIKE);
+    }
+
+    /**
+     * Implement change like interaction. (like/dislike)
+     *
+     * @return bool
+     */
+    public function toggleLikeInteraction(): bool
+    {
+        if ($this->likeOne->isLiked()) {
+            $this->likeOne->type = LikeTypeEnum::DISLIKE;
+        } else {
+            $this->likeOne->type = LikeTypeEnum::LIKE;
+        }
+
+        return $this->likeOne->save();
     }
 }
