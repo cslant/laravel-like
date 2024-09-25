@@ -5,6 +5,7 @@ namespace CSlant\LaravelLike\Models;
 use CSlant\LaravelLike\Enums\LikeTypeEnum;
 use CSlant\LaravelLike\Traits\InteractionRelationship;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Query\Builder;
 use Illuminate\Support\Carbon;
 
 /**
@@ -45,7 +46,6 @@ class Like extends Model
 
     /**
      * Check if the record is liked.
-     * Use with likeOne() relationship. Can't use with likes() relationship.
      *
      * @see InteractionRelationship::likeOne()
      *
@@ -53,12 +53,12 @@ class Like extends Model
      */
     public function isLiked(): bool
     {
+        // Use with likeOne() relationship. Can't use with likes() relationship.
         return $this->type->isLike();
     }
 
     /**
      * Check if the record is disliked.
-     * Use with likeOne() relationship. Can't use with likes() relationship.
      *
      * @see InteractionRelationship::likeOne()
      *
@@ -66,12 +66,12 @@ class Like extends Model
      */
     public function isDisliked(): bool
     {
+        // Use with likeOne() relationship. Can't use with likes() relationship.
         return $this->type->isDislike();
     }
 
     /**
      * Check if the record is loved.
-     * Use with likeOne() relationship. Can't use with likes() relationship.
      *
      * @see InteractionRelationship::likeOne()
      *
@@ -79,6 +79,21 @@ class Like extends Model
      */
     public function isLove(): bool
     {
+        // Use with likeOne() relationship. Can't use with likes() relationship.
         return $this->type->isLove();
+    }
+
+    /**
+     * Scope a query to only include records of a given model type.
+     *
+     * @param  Builder  $query
+     * @param  string  $modelType
+     *
+     * @return Builder
+     */
+    public function scopeWithModelType(Builder $query, string $modelType): Builder
+    {
+        // Use with likes() relationship. Can't use with likeOne() relationship.
+        return $query->where('model_type', app($modelType)->getMorphClass());
     }
 }
