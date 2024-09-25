@@ -2,7 +2,7 @@
 
 namespace CSlant\LaravelLike\Models;
 
-use CSlant\LaravelLike\Enums\LikeTypeEnum;
+use CSlant\LaravelLike\Enums\InteractionTypeEnum;
 use CSlant\LaravelLike\Traits\InteractionRelationship;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Query\Builder;
@@ -16,7 +16,7 @@ use Illuminate\Support\Carbon;
  * @property int $user_id
  * @property int $model_id
  * @property string $model_type
- * @property LikeTypeEnum $type
+ * @property InteractionTypeEnum $type
  * @property Carbon $created_at
  * @property Carbon $updated_at
  */
@@ -41,7 +41,7 @@ class Like extends Model
      */
     protected $casts = [
         'model_type' => 'string',
-        'type' => LikeTypeEnum::class,
+        'type' => InteractionTypeEnum::class,
     ];
 
     /**

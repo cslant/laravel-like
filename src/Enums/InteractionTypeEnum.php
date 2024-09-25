@@ -2,7 +2,7 @@
 
 namespace CSlant\LaravelLike\Enums;
 
-enum LikeTypeEnum: string
+enum InteractionTypeEnum: string
 {
     case DEFAULT = 'default';
     case LIKE = 'like';
@@ -12,7 +12,7 @@ enum LikeTypeEnum: string
     /**
      * Get the values of the enum.
      *
-     * @return array<int, LikeTypeEnum>
+     * @return array<int, InteractionTypeEnum>
      */
     public static function getValues(): array
     {
