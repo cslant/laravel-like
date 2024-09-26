@@ -2,6 +2,21 @@
 
 Here you can see the full list of changes between each Laravel Like release.
 
+## v1.0.0 - 2024-09-26
+
+### What's Changed
+
+* Interaction features by @tanhongit in https://github.com/cslant/laravel-like/pull/2
+  * Update love trait
+  * Implement to get the interaction type
+  * Create methods to check the interaction type of the model
+  * Create the toggle Like Interaction
+  * Add new scopes for Like model
+  * Refactor code
+  
+
+**Full Changelog**: https://github.com/cslant/laravel-like/compare/v0.4.0...v1.0.0
+
 ## v0.4.0 - 2024-09-25
 
 ### What's Changed
