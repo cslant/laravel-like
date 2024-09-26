@@ -23,10 +23,16 @@ return [
      * The model and foreign key for the user relationship.
      */
     'users' => [
-        /* User model class. */
+        /*
+         * User model class.
+         * Use this to set the user model class for the user relationship.
+         */
         'model' => 'App\Models\User',
 
-        /* User tables foreign key name. */
+        /*
+         * User tables foreign key name.
+         * Use this to set the foreign key name for the user relationship.
+         */
         'foreign_key' => 'user_id',
     ],
 ];

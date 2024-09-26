@@ -20,6 +20,8 @@ use Illuminate\Support\Carbon;
  * @property InteractionTypeEnum $type
  * @property Carbon $created_at
  * @property Carbon $updated_at
+ * @property Model $user
+ * @property Model $model
  *
  * @property-read string $interaction_type getInteractionTypeAttribute()
  */
@@ -46,6 +48,29 @@ class Like extends Model
         'model_type' => 'string',
         'type' => InteractionTypeEnum::class,
     ];
+
+    /**
+     * Get the user that owns the like.
+     *
+     * @return BelongsTo
+     */
+    public function user(): BelongsTo
+    {
+        $userModel = (string) (config('like.users.model') ?? config('auth.providers.users.model'));
+        $userForeignKey = (string) (config('like.users.foreign_key') ?? 'user_id');
+
+        return $this->belongsTo($userModel, $userForeignKey);
+    }
+
+    /**
+     * Get the model that the like belongs to.
+     *
+     * @return BelongsTo<Model, self>
+     */
+    public function model(): BelongsTo
+    {
+        return $this->morphTo();
+    }
 
     /**
      * Check if the record is liked.
@@ -108,29 +133,6 @@ class Like extends Model
     public function getInteractionTypeAttribute(): string
     {
         return $this->type->value;
-    }
-
-    /**
-     * Get the user that owns the like.
-     *
-     * @return BelongsTo
-     */
-    public function user(): BelongsTo
-    {
-        $userModel = (string) (config('like.users.model') ?? config('auth.providers.users.model'));
-        $userForeignKey = (string) (config('like.users.foreign_key') ?? 'user_id');
-
-        return $this->belongsTo($userModel, $userForeignKey);
-    }
-
-    /**
-     * Get the model that the like belongs to.
-     *
-     * @return BelongsTo<Model, self>
-     */
-    public function model(): BelongsTo
-    {
-        return $this->morphTo();
     }
 
     /**
