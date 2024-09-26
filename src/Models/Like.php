@@ -5,6 +5,7 @@ namespace CSlant\LaravelLike\Models;
 use CSlant\LaravelLike\Enums\InteractionTypeEnum;
 use CSlant\LaravelLike\Traits\InteractionRelationship;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Query\Builder;
 use Illuminate\Support\Carbon;
 
@@ -107,5 +108,18 @@ class Like extends Model
     public function getInteractionTypeAttribute(): string
     {
         return $this->type->value;
+    }
+
+    /**
+     * Get the user that owns the like.
+     *
+     * @return BelongsTo
+     */
+    public function user(): BelongsTo
+    {
+        $userModel = (string) (config('like.users.model') ?? config('auth.providers.users.model'));
+        $userForeignKey = (string) (config('like.users.foreign_key') ?? 'user_id');
+
+        return $this->belongsTo($userModel, $userForeignKey);
     }
 }

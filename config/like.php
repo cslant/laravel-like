@@ -15,7 +15,13 @@ return [
     'table_name' => 'likes',
 
     /*
-     * User tables foreign key name.
+     * The model and foreign key for the user relationship.
      */
-    'user_foreign_key' => 'user_id',
+    'users' => [
+        /* User model class. */
+        'model' => 'App\Models\User',
+
+        /* User tables foreign key name. */
+        'foreign_key' => 'user_id',
+    ],
 ];

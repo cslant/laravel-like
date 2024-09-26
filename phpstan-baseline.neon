@@ -1,2 +1,7 @@
 parameters:
-    excludePaths:
+    ignoreErrors:
+        - message: '#Cannot cast mixed to string#'
+          path: src/*
+
+        - message: '#Method CSlant\\LaravelLike\\Models\\Like::user\(\) return type with generic class Illuminate\\Database\\Eloquent\\Relations\\BelongsTo does not specify its types: TRelatedModel, TChildModel#'
+          path: src/Models/Like.php

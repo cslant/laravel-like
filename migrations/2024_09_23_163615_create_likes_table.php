@@ -18,7 +18,7 @@ return new class extends Migration
                 $table->uuid()->index();
             }
 
-            $table->unsignedBigInteger(config('like.user_foreign_key'))->index();
+            $table->unsignedBigInteger(config('like.users.foreign_key'))->index();
             $table->morphs('model');
             $table->string('type')->default('like');
 
