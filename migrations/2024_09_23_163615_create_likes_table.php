@@ -22,7 +22,7 @@ return new class extends Migration
             $table->morphs('model');
             $table->string('type')->default('like');
 
-            $table->unique(['user_id', 'model_id', 'model_type', 'type'], 'unique_user_model_type_interaction');
+            $table->unique([config('like.users.foreign_key'), 'model_id', 'model_type', 'type'], 'unique_user_model_type_interaction');
 
             $table->timestamps();
         });
