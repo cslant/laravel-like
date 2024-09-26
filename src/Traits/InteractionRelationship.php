@@ -37,14 +37,4 @@ trait InteractionRelationship
     {
         return $this->morphMany(Like::class, 'model');
     }
-
-    /**
-     * Get the interaction type.
-     *
-     * @return string
-     */
-    public function interactionType(): string
-    {
-        return $this->type->value;
-    }
 }

@@ -19,6 +19,8 @@ use Illuminate\Support\Carbon;
  * @property InteractionTypeEnum $type
  * @property Carbon $created_at
  * @property Carbon $updated_at
+ *
+ * @property-read string $interaction_type getInteractionTypeAttribute()
  */
 class Like extends Model
 {
@@ -95,5 +97,15 @@ class Like extends Model
     {
         // Use with likes() relationship. Can't use with likeOne() relationship.
         return $query->where('model_type', app($modelType)->getMorphClass());
+    }
+
+    /**
+     * Get the interaction type attribute. Used for the accessor.
+     *
+     * @return string
+     */
+    public function getInteractionTypeAttribute(): string
+    {
+        return $this->type->value;
     }
 }
