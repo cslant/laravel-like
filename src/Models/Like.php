@@ -89,14 +89,14 @@ class Like extends Model
      * Scope a query to only include records of a given model type.
      *
      * @param  Builder  $query
-     * @param  string  $modelType
+     * @param  string  $modelType The model type. E.g. App\Models\Post::class
      *
      * @return Builder
      */
     public function scopeWithModelType(Builder $query, string $modelType): Builder
     {
         // Use with likes() relationship. Can't use with likeOne() relationship.
-        return $query->where('model_type', app($modelType)->getMorphClass());
+        return $query->where('model_type', $modelType);
     }
 
     /**

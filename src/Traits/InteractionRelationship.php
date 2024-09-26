@@ -19,7 +19,7 @@ use Illuminate\Database\Eloquent\Relations\MorphOne;
 trait InteractionRelationship
 {
     /**
-     * Like has one relationship with the model.
+     * Interaction has one relationship with the model.
      *
      * @return MorphOne
      */
@@ -29,7 +29,7 @@ trait InteractionRelationship
     }
 
     /**
-     * Like has many relationship with the model.
+     * Interaction has many relationship with the model.
      *
      * @return MorphMany
      */
