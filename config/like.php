@@ -15,6 +15,11 @@ return [
     'table_name' => 'likes',
 
     /*
+     * The model class for the interaction table.
+     */
+    'interaction_model' => 'CSlant\LaravelLike\Models\Like',
+
+    /*
      * The model and foreign key for the user relationship.
      */
     'users' => [
