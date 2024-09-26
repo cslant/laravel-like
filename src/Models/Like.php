@@ -132,4 +132,20 @@ class Like extends Model
     {
         return $this->morphTo();
     }
+
+    /**
+     * Toggle the like interaction.
+     *
+     * @return string
+     */
+    public function toggleLikeInteraction(): string
+    {
+        if ($this->isLiked()) {
+            $this->type = InteractionTypeEnum::DISLIKE;
+        } else {
+            $this->type = InteractionTypeEnum::LIKE;
+        }
+
+        return $this->type->value;
+    }
 }
