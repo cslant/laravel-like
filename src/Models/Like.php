@@ -122,4 +122,14 @@ class Like extends Model
 
         return $this->belongsTo($userModel, $userForeignKey);
     }
+
+    /**
+     * Get the model that the like belongs to.
+     *
+     * @return BelongsTo<Model, self>
+     */
+    public function model(): BelongsTo
+    {
+        return $this->morphTo();
+    }
 }
