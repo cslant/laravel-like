@@ -1,5 +1,6 @@
 # laravel-like
-User 👍 like and 👎 dislike features for Laravel Application.
+
+The interaction for User 👍 like, 👎 dislike, and love ❤️ features for Laravel Application.
 
 <p align="center">
 <a href="#"><img src="https://img.shields.io/github/license/cslant/laravel-like.svg?style=flat-square" alt="License"></a>
@@ -12,7 +13,7 @@ User 👍 like and 👎 dislike features for Laravel Application.
 
 ## 📝 Introduction
 
-This package provides a simple way to add like 👍, dislike 👎, and love ❤️ or unlike 🤚 features to your Laravel application.
+This package provides an interaction way to add like 👍, dislike 👎, and love ❤️ features to your Laravel application.
 
 It is easy to use and can be customized to fit your needs.
 
