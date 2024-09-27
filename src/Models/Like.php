@@ -5,6 +5,7 @@ namespace CSlant\LaravelLike\Models;
 use CSlant\LaravelLike\Enums\InteractionTypeEnum;
 use CSlant\LaravelLike\Traits\InteractionRelationship;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Query\Builder;
 use Illuminate\Support\Carbon;
 
@@ -19,6 +20,10 @@ use Illuminate\Support\Carbon;
  * @property InteractionTypeEnum $type
  * @property Carbon $created_at
  * @property Carbon $updated_at
+ * @property Model $user
+ * @property Model $model
+ *
+ * @property-read string $interaction_type getInteractionTypeAttribute()
  */
 class Like extends Model
 {
@@ -43,6 +48,29 @@ class Like extends Model
         'model_type' => 'string',
         'type' => InteractionTypeEnum::class,
     ];
+
+    /**
+     * Get the user that owns the like.
+     *
+     * @return BelongsTo
+     */
+    public function user(): BelongsTo
+    {
+        $userModel = (string) (config('like.users.model') ?? config('auth.providers.users.model'));
+        $userForeignKey = (string) (config('like.users.foreign_key') ?? 'user_id');
+
+        return $this->belongsTo($userModel, $userForeignKey);
+    }
+
+    /**
+     * Get the model that the like belongs to.
+     *
+     * @return BelongsTo<Model, self>
+     */
+    public function model(): BelongsTo
+    {
+        return $this->morphTo();
+    }
 
     /**
      * Check if the record is liked.
@@ -87,13 +115,39 @@ class Like extends Model
      * Scope a query to only include records of a given model type.
      *
      * @param  Builder  $query
-     * @param  string  $modelType
+     * @param  string  $modelType The model type. E.g. App\Models\Post::class
      *
      * @return Builder
      */
     public function scopeWithModelType(Builder $query, string $modelType): Builder
     {
         // Use with likes() relationship. Can't use with likeOne() relationship.
-        return $query->where('model_type', app($modelType)->getMorphClass());
+        return $query->where('model_type', $modelType);
+    }
+
+    /**
+     * Get the interaction type attribute. Used for the accessor.
+     *
+     * @return string
+     */
+    public function getInteractionTypeAttribute(): string
+    {
+        return $this->type->value;
+    }
+
+    /**
+     * Toggle the like interaction.
+     *
+     * @return string
+     */
+    public function toggleLikeInteraction(): string
+    {
+        if ($this->isLiked()) {
+            $this->type = InteractionTypeEnum::DISLIKE;
+        } else {
+            $this->type = InteractionTypeEnum::LIKE;
+        }
+
+        return $this->type->value;
     }
 }

@@ -18,11 +18,11 @@ return new class extends Migration
                 $table->uuid()->index();
             }
 
-            $table->unsignedBigInteger(config('like.user_foreign_key'))->index();
+            $table->unsignedBigInteger(config('like.users.foreign_key'))->index();
             $table->morphs('model');
             $table->string('type')->default('like');
 
-            $table->unique(['user_id', 'model_id', 'model_type', 'type'], 'unique_user_model_type_interaction');
+            $table->unique([config('like.users.foreign_key'), 'model_id', 'model_type', 'type'], 'unique_user_model_type_interaction');
 
             $table->timestamps();
         });
