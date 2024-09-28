@@ -2,6 +2,20 @@
 
 Here you can see the full list of changes between each Laravel Like release.
 
+## v1.0.1 - 2024-09-28
+
+### What's Changed
+
+* Interaction of Like by @tanhongit in https://github.com/cslant/laravel-like/pull/3
+  * Update config
+  * Update tutorial comments
+  * Add relationships for the Like model
+  * Refactor Like traits
+  
+* Add a relationship for the User model
+
+**Full Changelog**: https://github.com/cslant/laravel-like/compare/v1.0.0...v1.0.1
+
 ## v1.0.0 - 2024-09-26
 
 ### What's Changed
