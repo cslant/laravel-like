@@ -14,9 +14,11 @@ use Illuminate\Database\Eloquent\Relations\HasMany;
 trait UserHasInteraction
 {
     /**
+     * Get all likes of the user. This method is used for eager loading.
+     *
      * @return HasMany
      */
-    public function like(): HasMany
+    public function likes(): HasMany
     {
         $interactionModel = (string) (config('like.interaction_model') ?? 'CSlant\LaravelLike\Models\Like');
         $userForeignKey = (string) (config('like.users.foreign_key') ?? 'user_id');
