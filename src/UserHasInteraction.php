@@ -1,6 +1,6 @@
 <?php
 
-namespace CSlant\LaravelLike\Traits;
+namespace CSlant\LaravelLike;
 
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\HasMany;
