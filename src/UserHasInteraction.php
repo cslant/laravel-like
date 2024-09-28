@@ -11,7 +11,7 @@ use Illuminate\Database\Eloquent\Relations\HasMany;
  *
  * @package CSlant\LaravelLike\Traits
  * @mixin Model
- * @method Model hasMany(string $related, string $foreignKey = null, string $localKey = null)
+ * @@method HasMany hasMany(string $related, string $foreignKey = null, string $localKey = null)
  */
 trait UserHasInteraction
 {
