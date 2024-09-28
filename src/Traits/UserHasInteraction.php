@@ -2,6 +2,7 @@
 
 namespace CSlant\LaravelLike\Traits;
 
+use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\HasMany;
 
 /**
@@ -9,7 +10,8 @@ use Illuminate\Database\Eloquent\Relations\HasMany;
  * use this trait in your User model
  *
  * @package CSlant\LaravelLike\Traits
- * @mixin \Illuminate\Database\Eloquent\Model
+ * @mixin Model
+ * @method Model hasMany(string $interactionModel, string $userForeignKey)
  */
 trait UserHasInteraction
 {
