@@ -23,7 +23,7 @@ use Illuminate\Support\Carbon;
  * @property Model $user
  * @property Model $model
  *
- * @property-read string $interaction_type getInteractionTypeAttribute()
+ * @property-read string $interaction_type getInteractionTypeAttribute() - Get the interaction type attribute. Used for the accessor.
  */
 class Like extends Model
 {
