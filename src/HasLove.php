@@ -17,6 +17,6 @@ use Illuminate\Database\Eloquent\Model;
 trait HasLove
 {
     use InteractionRelationship;
-    use LoveScope;
     use LoveCount;
+    use LoveScope;
 }

@@ -17,6 +17,6 @@ use Illuminate\Database\Eloquent\Model;
 trait HasLike
 {
     use InteractionRelationship;
-    use LikeScopes;
     use LikeCount;
+    use LikeScopes;
 }
