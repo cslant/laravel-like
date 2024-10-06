@@ -54,7 +54,7 @@ trait InteractionRelationship
         $query = $this->likes()->where($userForeignKey, $userId);
 
         if (in_array($interactionType, InteractionTypeEnum::getValuesAsStrings())) {
-            return $query->where('type', $interactionType);
+            $query->where('type', $interactionType);
         }
 
         return $query->exists();
