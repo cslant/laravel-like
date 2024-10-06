@@ -37,4 +37,18 @@ trait InteractionRelationship
     {
         return $this->morphMany((string) config('like.interaction_model') ?? Like::class, 'model');
     }
+
+    /**
+     * Check and forget all recorded interactions of the given type.
+     *
+     * @param  string  $interactionType
+     *
+     * @return static
+     */
+    public function forgetInteraction(string $interactionType): static
+    {
+        $this->likes()->where('type', $interactionType)->delete();
+
+        return $this;
+    }
 }
