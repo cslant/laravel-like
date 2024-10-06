@@ -69,6 +69,8 @@ enum InteractionTypeEnum: string
 
     /**
      * Get the type by value.
+     * This method can be used to get the value of InteractionTypeEnum based on the passed string.
+     * You can use it to convert string value to enum value.
      *
      * @param  string  $value
      *
