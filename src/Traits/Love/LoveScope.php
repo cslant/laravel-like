@@ -37,4 +37,16 @@ trait LoveScope
     {
         return $this->likes()->where('type', InteractionTypeEnum::LOVE);
     }
+
+    /**
+     * Check if the model has been loved by the given user.
+     *
+     * @param  int  $userId
+     *
+     * @return bool
+     */
+    public function isLovedBy(int $userId): bool
+    {
+        return $this->isInteractedBy($userId, InteractionTypeEnum::LOVE);
+    }
 }

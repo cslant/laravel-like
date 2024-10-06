@@ -2,6 +2,7 @@
 
 namespace CSlant\LaravelLike\Traits;
 
+use CSlant\LaravelLike\Enums\InteractionTypeEnum;
 use CSlant\LaravelLike\Models\Like;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\MorphMany;
@@ -39,15 +40,48 @@ trait InteractionRelationship
     }
 
     /**
+     * Check if the model has been interacted by the given user.
+     *
+     * @param  int  $userId
+     * @param  null|InteractionTypeEnum  $interactionType
+     *
+     * @return bool
+     */
+    public function isInteractedBy(int $userId, ?InteractionTypeEnum $interactionType = null): bool
+    {
+        $userForeignKey = (string) (config('like.users.foreign_key') ?? 'user_id');
+
+        $query = $this->likes()->where($userForeignKey, $userId);
+
+        if (in_array($interactionType, InteractionTypeEnum::getValuesAsStrings())) {
+            return $query->where('type', $interactionType);
+        }
+
+        return $query->exists();
+    }
+
+    /**
      * Check and forget all recorded interactions of the given type.
      *
      * @param  string  $interactionType
      *
      * @return static
      */
-    public function forgetInteraction(string $interactionType): static
+    public function forgetInteractions(string $interactionType): static
     {
         $this->likes()->where('type', $interactionType)->delete();
+
+        return $this;
+    }
+
+    /**
+     * Check and forget all recorded interactions.
+     *
+     * @return static
+     */
+    public function forgetAllInteractions(): static
+    {
+        $this->likes()->delete();
 
         return $this;
     }
