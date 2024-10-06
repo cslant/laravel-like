@@ -66,4 +66,23 @@ enum InteractionTypeEnum: string
     {
         return $this === self::LOVE;
     }
+
+    /**
+     * Get the type by value.
+     * This method can be used to get the value of InteractionTypeEnum based on the passed string.
+     * You can use it to convert string value to enum value.
+     *
+     * @param  string  $value
+     *
+     * @return InteractionTypeEnum
+     */
+    public function getTypeByValue(string $value): InteractionTypeEnum
+    {
+        return match ($value) {
+            self::LIKE->value => self::LIKE,
+            self::DISLIKE->value => self::DISLIKE,
+            self::LOVE->value => self::LOVE,
+            default => self::DEFAULT,
+        };
+    }
 }

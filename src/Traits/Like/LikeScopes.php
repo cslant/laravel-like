@@ -57,4 +57,28 @@ trait LikeScopes
     {
         return $this->likes()->where('type', InteractionTypeEnum::DISLIKE);
     }
+
+    /**
+     * Check if the model has been interacted by the given user.
+     *
+     * @param  int  $userId
+     *
+     * @return bool
+     */
+    public function isLikedBy(int $userId): bool
+    {
+        return $this->isInteractedBy($userId, InteractionTypeEnum::LIKE);
+    }
+
+    /**
+     * Check if the model has been interacted by the given user.
+     *
+     * @param  int  $userId
+     *
+     * @return bool
+     */
+    public function isDislikedBy(int $userId): bool
+    {
+        return $this->isInteractedBy($userId, InteractionTypeEnum::DISLIKE);
+    }
 }
