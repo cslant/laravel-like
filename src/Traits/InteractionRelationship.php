@@ -83,7 +83,7 @@ trait InteractionRelationship
      */
     public function forgetInteractions(?string $interactionType = null): static
     {
-        if (in_array($interactionType, InteractionTypeEnum::getValuesAsStrings())) {
+        if ($interactionType && in_array($interactionType, InteractionTypeEnum::getValuesAsStrings())) {
             return $this->forgetInteractionsOfType($interactionType);
         }
 

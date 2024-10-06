@@ -2,6 +2,7 @@
 
 namespace CSlant\LaravelLike;
 
+use CSlant\LaravelLike\Enums\InteractionTypeEnum;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\HasMany;
 
@@ -26,5 +27,37 @@ trait UserHasInteraction
         $userForeignKey = (string) (config('like.users.foreign_key') ?? 'user_id');
 
         return $this->hasMany($interactionModel, $userForeignKey);
+    }
+
+    /**
+     * Check if the user has liked the given model.
+     *
+     * @param  string  $interactionType
+     *
+     * @return static
+     */
+    public function forgetInteractionsOfType(string $interactionType): static
+    {
+        $this->likes()->where('type', $interactionType)->delete();
+
+        return $this;
+    }
+
+    /**
+     * Check if the user has liked the given model.
+     *
+     * @param  null|string  $interactionType
+     *
+     * @return static
+     */
+    public function forgetInteractions(?string $interactionType = null): static
+    {
+        if ($interactionType && in_array($interactionType, InteractionTypeEnum::getValuesAsStrings())) {
+            return $this->forgetInteractionsOfType($interactionType);
+        }
+
+        $this->likes()->delete();
+
+        return $this;
     }
 }
