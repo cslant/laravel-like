@@ -3,6 +3,7 @@
 namespace CSlant\LaravelLike;
 
 use CSlant\LaravelLike\Enums\InteractionTypeEnum;
+use CSlant\LaravelLike\Models\Like;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\HasMany;
 
@@ -23,7 +24,7 @@ trait UserHasInteraction
      */
     public function likes(): HasMany
     {
-        $interactionModel = (string) (config('like.interaction_model') ?? 'CSlant\LaravelLike\Models\Like');
+        $interactionModel = (string) (config('like.interaction_model') ?? Like::class);
         $userForeignKey = (string) (config('like.users.foreign_key') ?? 'user_id');
 
         return $this->hasMany($interactionModel, $userForeignKey);
