@@ -89,7 +89,7 @@ enum InteractionTypeEnum: string
     /**
      * Check if the value is valid.
      *
-     * @param  InteractionTypeEnum|null  $value
+     * @param  null|InteractionTypeEnum  $value
      *
      * @return bool
      */

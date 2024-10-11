@@ -43,7 +43,7 @@ trait InteractionRelationship
      * Get the interaction of the given user.
      *
      * @param  int  $userId
-     * @param  InteractionTypeEnum|null  $interactionType
+     * @param  null|InteractionTypeEnum  $interactionType
      *
      * @return MorphMany
      */
