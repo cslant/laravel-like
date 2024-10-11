@@ -2,6 +2,16 @@
 
 Here you can see the full list of changes between each Laravel Like release.
 
+## v1.0.3 - 2024-10-11
+
+### What's Changed
+
+- [Update enum for interaction type](https://github.com/cslant/laravel-like/commit/eaaa3a05724f154d9c1fc8681c7082eb52113526)
+- [Add the valid checking interaction type](https://github.com/cslant/laravel-like/commit/d95dac7cdcd97a0a2d66578118517b3f445a6360)
+- [Create select interactions by user for model](https://github.com/cslant/laravel-like/commit/9ecae2dc0af1f3c23e2d474460424c61b9434498)
+
+**Full Changelog**: https://github.com/cslant/laravel-like/compare/v1.0.2...v1.0.3
+
 ## v1.0.2 - 2024-10-06
 
 ### What's Changed
