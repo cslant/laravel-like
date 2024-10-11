@@ -4,7 +4,6 @@ namespace CSlant\LaravelLike\Enums;
 
 enum InteractionTypeEnum: string
 {
-    case DEFAULT = 'default';
     case NEUTRAL = 'neutral';
     case LIKE = 'like';
     case DISLIKE = 'dislike';
@@ -83,8 +82,7 @@ enum InteractionTypeEnum: string
             self::LIKE->value => self::LIKE,
             self::DISLIKE->value => self::DISLIKE,
             self::LOVE->value => self::LOVE,
-            self::NEUTRAL->value => self::NEUTRAL,
-            default => self::DEFAULT,
+            default => self::NEUTRAL,
         };
     }
 
