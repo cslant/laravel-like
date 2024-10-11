@@ -39,6 +39,8 @@ enum InteractionTypeEnum: string
 
     /**
      * Check if the value is like.
+     *
+     * @return bool
      */
     public function isLike(): bool
     {
@@ -47,6 +49,8 @@ enum InteractionTypeEnum: string
 
     /**
      * Check if the value is dislike.
+     *
+     * @return bool
      */
     public function isDislike(): bool
     {
@@ -55,6 +59,8 @@ enum InteractionTypeEnum: string
 
     /**
      * Check if the value is love.
+     *
+     * @return bool
      */
     public function isLove(): bool
     {
@@ -65,6 +71,10 @@ enum InteractionTypeEnum: string
      * Get the type by value.
      * This method can be used to get the value of InteractionTypeEnum based on the passed string.
      * You can use it to convert string value to enum value.
+     *
+     * @param  string  $value
+     *
+     * @return InteractionTypeEnum
      */
     public static function getTypeByValue(string $value): InteractionTypeEnum
     {
