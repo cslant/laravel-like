@@ -40,6 +40,27 @@ trait InteractionRelationship
     }
 
     /**
+     * Get the interaction of the given user.
+     *
+     * @param  int  $userId
+     * @param  InteractionTypeEnum|null  $interactionType
+     *
+     * @return MorphMany
+     */
+    public function withInteractionBy(int $userId, ?InteractionTypeEnum $interactionType = null): MorphMany
+    {
+        $userForeignKey = (string) (config('like.users.foreign_key') ?? 'user_id');
+
+        $query = $this->likes()->where($userForeignKey, $userId);
+
+        if ($interactionType && InteractionTypeEnum::isValid($interactionType)) {
+            $query->where('type', $interactionType);
+        }
+
+        return $query;
+    }
+
+    /**
      * Check if the model has been interacted by the given user.
      *
      * @param  int  $userId
@@ -49,15 +70,7 @@ trait InteractionRelationship
      */
     public function isInteractedBy(int $userId, ?InteractionTypeEnum $interactionType = null): bool
     {
-        $userForeignKey = (string) (config('like.users.foreign_key') ?? 'user_id');
-
-        $query = $this->likes()->where($userForeignKey, $userId);
-
-        if (in_array($interactionType, InteractionTypeEnum::getValuesAsStrings())) {
-            $query->where('type', $interactionType);
-        }
-
-        return $query->exists();
+        return $this->withInteractionBy($userId, $interactionType)->exists();
     }
 
     /**

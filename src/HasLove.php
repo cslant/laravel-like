@@ -9,7 +9,7 @@ use Illuminate\Database\Eloquent\Model;
 
 /**
  * Trait HasLove
- * use this trait in your model(post,article,...) to enable liking functionality
+ * use this trait in your model(post, article,...) to enable liking functionality
  *
  * @package CSlant\LaravelLike
  * @mixin Model
