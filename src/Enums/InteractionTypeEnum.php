@@ -76,7 +76,7 @@ enum InteractionTypeEnum: string
      *
      * @return InteractionTypeEnum
      */
-    public function getTypeByValue(string $value): InteractionTypeEnum
+    public static function getTypeByValue(string $value): InteractionTypeEnum
     {
         return match ($value) {
             self::LIKE->value => self::LIKE,
