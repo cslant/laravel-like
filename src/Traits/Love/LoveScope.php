@@ -15,6 +15,7 @@ use Illuminate\Database\Eloquent\Relations\MorphOne;
  *
  * @method MorphOne likeOne()
  * @method MorphMany likes()
+ * @method bool isInteractedBy(int $userId, string $type)
  */
 trait LoveScope
 {
