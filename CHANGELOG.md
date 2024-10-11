@@ -2,6 +2,14 @@
 
 Here you can see the full list of changes between each Laravel Like release.
 
+## v1.0.4 - 2024-10-11
+
+### What's Changed
+
+- Add static for get interaction type by string
+
+**Full Changelog**: https://github.com/cslant/laravel-like/compare/v1.0.3...v1.0.4
+
 ## v1.0.3 - 2024-10-11
 
 ### What's Changed
