@@ -2,7 +2,7 @@
 
 The interaction for User 👍 like, 👎 dislike, and love ❤️ features for Laravel Application.
 
-<img src="https://github.com/cslant/laravel-like-docs/blob/main/assets/public/images/laravel-like-thumb-min.png" alt="Laravel Like Package">
+<img src="https://github.com/cslant/laravel-like-docs/blob/main/assets/public/images/laravel-like-thumb.webp" alt="Laravel Like Package">
 
 <p align="center">
 <a href="#"><img src="https://img.shields.io/github/license/cslant/laravel-like.svg?style=flat-square" alt="License"></a>
