@@ -24,6 +24,10 @@ It is easy to use and can be customized to fit your needs.
 - PHP ^8.1
 - Laravel ^9.0|^10.0|^11.0
 
+## 📖 Official Documentation
+
+The detailed documentation is in the **[Laravel Like Package - Official documentation](https://docs.cslant.com/laravel-like/)**.
+
 ## 🔧 Installation
 
 You can install the package via Composer:
@@ -31,10 +35,6 @@ You can install the package via Composer:
 ```bash
 composer require cslant/laravel-like
 ```
-
-## 📖 Official Documentation
-
-You can find the detailed documentation in the **[Laravel Like Package - Official documentation](https://docs.cslant.com/laravel-like/)**.
 
 ## Configuration and Migrations
 
