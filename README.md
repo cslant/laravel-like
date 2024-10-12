@@ -32,6 +32,10 @@ You can install the package via Composer:
 composer require cslant/laravel-like
 ```
 
+## 📖 Official Documentation
+
+You can find the detailed documentation in the **[Laravel Like Package - Official documentation](https://docs.cslant.com/laravel-like/)**.
+
 ## Configuration and Migrations
 
 You can publish all the necessary configuration and migration files by running the following command:
@@ -45,10 +49,6 @@ After the configuration file has been published, you can run the migration:
 ```bash
 php artisan migrate
 ```
-
-## 📖 Official Documentation
-
-You can find the detailed documentation in the [Official documentation](https://docs.cslant.com/laravel-like/).
 
 ## 📄 License
 
