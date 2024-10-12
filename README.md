@@ -45,3 +45,15 @@ After the configuration file has been published, you can run the migration:
 ```bash
 php artisan migrate
 ```
+
+## 📖 Official Documentation
+
+You can find the detailed documentation in the [Official documentation](https://docs.cslant.com/laravel-like/).
+
+## 📄 License
+
+The MIT License (MIT). Please see [License File](LICENSE) for more information.
+
+## 🙏 Acknowledgement
+
+This package is inspired by the [laravel-like](https://github.com/overtrue/laravel-like) package by [overtrue](https://github.com/overtrue). I have added some additional features and improvements to the package.
