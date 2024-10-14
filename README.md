@@ -26,7 +26,7 @@ It is easy to use and can be customized to fit your needs.
 
 ## 📖 Official Documentation
 
-The detailed documentation is in the **[Laravel Like Package - Official documentation](https://docs.cslant.com/laravel-like/)**.
+The detailed documentation is in the **[Laravel Like Package - Official documentation](https://docs.cslant.com/laravel-like)**.
 
 ## 🔧 Installation
 
