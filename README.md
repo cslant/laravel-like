@@ -24,6 +24,11 @@ It is easy to use and can be customized to fit your needs.
 - PHP ^8.1
 - Laravel ^9.0|^10.0|^11.0
 
+| Is Maintain        | PHP  | Laravel            | Blog Core |
+|--------------------|------|--------------------|-----------|
+| :white_check_mark: | ^8.2 | ^11.0, ^12.0       | v2.0      |
+| :x:                | ^8.1 | ^9.0, ^10.0, ^11.0 | v1.x      |
+
 ## 📖 Official Documentation
 
 The detailed documentation is in the **[Laravel Like Package - Official documentation](https://docs.cslant.com/laravel-like)**.
