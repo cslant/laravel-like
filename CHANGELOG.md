@@ -2,6 +2,18 @@
 
 Here you can see the full list of changes between each Laravel Like release.
 
+## v2.0.0 - 2025-04-14
+
+### What's Changed
+
+* chore(deps): bump dependabot/fetch-metadata from 2.2.0 to 2.3.0 by @dependabot in https://github.com/cslant/laravel-like/pull/5
+
+### New Contributors
+
+* @dependabot made their first contribution in https://github.com/cslant/laravel-like/pull/5
+
+**Full Changelog**: https://github.com/cslant/laravel-like/compare/v1.0.5...v2.0.0
+
 ## v1.0.5 - 2024-10-11
 
 **Full Changelog**: https://github.com/cslant/laravel-like/compare/v1.0.4...v1.0.5
