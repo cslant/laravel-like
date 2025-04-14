@@ -11,7 +11,7 @@ use Illuminate\Database\Eloquent\Relations\MorphMany;
  * @package CSlant\LaravelLike\Traits\Love
  * @mixin Model
  *
- * @method MorphMany<self, Model> lovesTo()
+ * @method MorphMany<self, *> lovesTo()
  */
 trait LoveCount
 {

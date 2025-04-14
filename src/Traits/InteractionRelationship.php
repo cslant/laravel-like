@@ -14,8 +14,8 @@ use Illuminate\Database\Eloquent\Relations\MorphOne;
  * @package CSlant\LaravelLike\Traits
  * @mixin Model
  *
- * @method MorphOne<self, Model> morphOne(string $related, string $name, string $type = null, string $id = null, string $localKey = null)
- * @method MorphMany<self, Model> morphMany(string $related, string $name, string $type = null, string $id = null, string $localKey = null)
+ * @method MorphOne<self, *> morphOne(string $related, string $name, string $type = null, string $id = null, string $localKey = null)
+ * @method MorphMany<self, *> morphMany(string $related, string $name, string $type = null, string $id = null, string $localKey = null)
  */
 trait InteractionRelationship
 {

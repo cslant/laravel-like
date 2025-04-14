@@ -20,7 +20,7 @@ trait UserHasInteraction
     /**
      * Get all likes of the user. This method is used for eager loading.
      *
-     * @return HasMany<Like, Model>
+     * @return HasMany<self, Model>
      */
     public function likes(): HasMany
     {

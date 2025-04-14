@@ -11,8 +11,8 @@ use Illuminate\Database\Eloquent\Relations\MorphMany;
  * @package CSlant\LaravelLike\Traits\Like
  * @mixin Model
  *
- * @method MorphMany<self, Model> likesTo()
- * @method MorphMany<self, Model> dislikesTo()
+ * @method MorphMany<self, *> likesTo()
+ * @method MorphMany<self, *> dislikesTo()
  */
 trait LikeCount
 {
