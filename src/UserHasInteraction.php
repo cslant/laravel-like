@@ -13,14 +13,14 @@ use Illuminate\Database\Eloquent\Relations\HasMany;
  *
  * @package CSlant\LaravelLike\Traits
  * @mixin Model
- * @method HasMany hasMany(string $related, string $foreignKey = null, string $localKey = null)
+ * @method HasMany<Like, Model> hasMany(string $related, string $foreignKey = null, string $localKey = null)
  */
 trait UserHasInteraction
 {
     /**
      * Get all likes of the user. This method is used for eager loading.
      *
-     * @return HasMany
+     * @return HasMany<Like, Model>
      */
     public function likes(): HasMany
     {

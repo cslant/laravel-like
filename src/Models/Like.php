@@ -52,11 +52,16 @@ class Like extends Model
     /**
      * Get the user that owns the like.
      *
-     * @return BelongsTo
+     * @return BelongsTo<Model, self>
      */
     public function user(): BelongsTo
     {
         $userModel = (string) (config('like.users.model') ?? config('auth.providers.users.model'));
+
+        if (!is_a($userModel, Model::class, true)) {
+            throw new \InvalidArgumentException("The user model must be a valid Eloquent model class.");
+        }
+
         $userForeignKey = (string) (config('like.users.foreign_key') ?? 'user_id');
 
         return $this->belongsTo($userModel, $userForeignKey);

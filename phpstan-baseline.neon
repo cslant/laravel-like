@@ -5,3 +5,5 @@ parameters:
 
         - message: '#Method CSlant\\LaravelLike\\Models\\Like::user\(\) return type with generic class Illuminate\\Database\\Eloquent\\Relations\\BelongsTo does not specify its types: TRelatedModel, TChildModel#'
           path: src/Models/Like.php
+        -
+          identifier: trait.unused
