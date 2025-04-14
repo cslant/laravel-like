@@ -13,8 +13,8 @@ use Illuminate\Database\Eloquent\Relations\MorphOne;
  * @package CSlant\LaravelLike\Traits\Love
  * @mixin Model
  *
- * @method MorphOne likeOne()
- * @method MorphMany likes()
+ * @method MorphOne<self, Model> likeOne()
+ * @method MorphMany<self, Model> likes()
  * @method bool isInteractedBy(int $userId, null|InteractionTypeEnum $type)
  */
 trait LoveScope
