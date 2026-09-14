@@ -6,6 +6,8 @@ test('count_digital formats large counts', function (int $count, int|string $exp
     [999, 999],
     [1000, '1K'],
     [1500, '1.5K'],
+    [999499, '999.5K'],
+    [999500, '1M'],
     [999999, '1M'],
     [1000000, '1M'],
 ]);

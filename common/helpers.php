@@ -17,7 +17,7 @@ if (!function_exists('count_digital')) {
         if ($count < 1000000) {
             $thousands = $count / 1000;
 
-            if ($thousands >= 999.95) {
+            if ($thousands >= 999.5) {
                 return '1M';
             }
 
