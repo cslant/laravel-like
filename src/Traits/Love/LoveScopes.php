@@ -8,7 +8,7 @@ use Illuminate\Database\Eloquent\Relations\MorphMany;
 use Illuminate\Database\Eloquent\Relations\MorphOne;
 
 /**
- * Trait LoveScope
+ * Trait LoveScopes
  *
  * @package CSlant\LaravelLike\Traits\Love
  * @mixin Model
@@ -17,7 +17,7 @@ use Illuminate\Database\Eloquent\Relations\MorphOne;
  * @method MorphMany<self, *> likes()
  * @method bool isInteractedBy(int $userId, null|InteractionTypeEnum $type)
  */
-trait LoveScope
+trait LoveScopes
 {
     /**
      * The scope locale for select love relationship.

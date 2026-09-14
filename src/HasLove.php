@@ -4,7 +4,7 @@ namespace CSlant\LaravelLike;
 
 use CSlant\LaravelLike\Traits\InteractionRelationship;
 use CSlant\LaravelLike\Traits\Love\LoveCount;
-use CSlant\LaravelLike\Traits\Love\LoveScope;
+use CSlant\LaravelLike\Traits\Love\LoveScopes;
 use Illuminate\Database\Eloquent\Model;
 
 /**
@@ -18,5 +18,5 @@ trait HasLove
 {
     use InteractionRelationship;
     use LoveCount;
-    use LoveScope;
+    use LoveScopes;
 }

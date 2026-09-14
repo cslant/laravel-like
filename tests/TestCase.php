@@ -45,6 +45,19 @@ abstract class TestCase extends Orchestra
             $table->timestamps();
         });
 
+        Schema::create('videos', function (Blueprint $table) {
+            $table->id();
+            $table->string('title')->default('');
+            $table->integer('duration')->default(0);
+            $table->timestamps();
+        });
+
+        Schema::create('podcasts', function (Blueprint $table) {
+            $table->id();
+            $table->string('title')->default('');
+            $table->timestamps();
+        });
+
         (include __DIR__.'/../migrations/2024_09_23_163615_create_likes_table.php')->up();
     }
 }

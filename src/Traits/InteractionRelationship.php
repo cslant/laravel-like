@@ -19,6 +19,8 @@ use Illuminate\Database\Eloquent\Relations\MorphOne;
  */
 trait InteractionRelationship
 {
+    use ForgetsInteractions;
+
     /**
      * Interaction has one relationship with the model.
      *
@@ -71,37 +73,5 @@ trait InteractionRelationship
     public function isInteractedBy(int $userId, ?InteractionTypeEnum $interactionType = null): bool
     {
         return $this->withInteractionBy($userId, $interactionType)->exists();
-    }
-
-    /**
-     * Check and forget all recorded interactions of the given type.
-     *
-     * @param  string  $interactionType
-     *
-     * @return static
-     */
-    public function forgetInteractionsOfType(string $interactionType): static
-    {
-        $this->likes()->where('type', $interactionType)->delete();
-
-        return $this;
-    }
-
-    /**
-     * Check and forget all recorded interactions.
-     *
-     * @param  null|string  $interactionType
-     *
-     * @return static
-     */
-    public function forgetInteractions(?string $interactionType = null): static
-    {
-        if ($interactionType && in_array($interactionType, InteractionTypeEnum::getValuesAsStrings())) {
-            return $this->forgetInteractionsOfType($interactionType);
-        }
-
-        $this->likes()->delete();
-
-        return $this;
     }
 }
