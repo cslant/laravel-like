@@ -36,7 +36,9 @@ interface LikeManager
 
     public function totalCount(Model $model): int;
 
+    /** @return Collection<int, Like> */
     public function userInteractions(?int $userId = null): Collection;
 
+    /** @return Collection<int, Model> */
     public function userLikedModels(?int $userId = null): Collection;
 }

@@ -20,8 +20,8 @@ use Illuminate\Support\Facades\Facade;
  * @method static int dislikesCount(\Illuminate\Database\Eloquent\Model $model)
  * @method static int lovesCount(\Illuminate\Database\Eloquent\Model $model)
  * @method static int totalCount(\Illuminate\Database\Eloquent\Model $model)
- * @method static \Illuminate\Support\Collection userInteractions(?int $userId = null)
- * @method static \Illuminate\Support\Collection userLikedModels(?int $userId = null)
+ * @method static \Illuminate\Support\Collection<int, \CSlant\LaravelLike\Models\Like> userInteractions(?int $userId = null)
+ * @method static \Illuminate\Support\Collection<int, \Illuminate\Database\Eloquent\Model> userLikedModels(?int $userId = null)
  */
 class Like extends Facade
 {

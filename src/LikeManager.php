@@ -102,6 +102,10 @@ class LikeManager implements LikeManagerContract
             ->count();
     }
 
+    /**
+     * @return Collection<int, Like>
+     * @throws AuthenticationException
+     */
     public function userInteractions(?int $userId = null): Collection
     {
         $userId = $this->resolveUserId($userId);
@@ -111,23 +115,27 @@ class LikeManager implements LikeManagerContract
             ->get();
     }
 
+    /** @return Collection<int, Model> */
     public function userLikedModels(?int $userId = null): Collection
     {
         $userId = $this->resolveUserId($userId);
 
-        return $this->newInteractionQuery()
+        $models = [];
+
+        $this->newInteractionQuery()
             ->where($this->userForeignKey(), $userId)
             ->where('type', InteractionTypeEnum::LIKE)
             ->get()
             ->groupBy('model_type')
-            ->map(function (Collection $likes, string $modelType) {
+            ->each(function (Collection $group, string $modelType) use (&$models) {
                 /** @var class-string<Model> $modelType */
-                return (new $modelType())->newQuery()
-                    ->whereIn('id', $likes->pluck('model_id'))
-                    ->get();
-            })
-            ->flatten(1)
-            ->values();
+                $models = array_merge($models, (new $modelType())->newQuery()
+                    ->whereIn('id', $group->pluck('model_id'))
+                    ->get()
+                    ->all());
+            });
+
+        return new Collection($models);
     }
 
     protected function setInteraction(Model $model, InteractionTypeEnum $type, ?int $userId): Like
@@ -222,12 +230,15 @@ class LikeManager implements LikeManagerContract
     protected function createInteraction(Model $model, int $userId, InteractionTypeEnum $type): Like
     {
         /** @var Like $like */
-        $like = $this->newInteractionQuery()->create([
-            $this->userForeignKey() => $userId,
+        $like = $this->newInteractionQuery()->getModel();
+
+        $like->fill([
             'model_id' => $model->getKey(),
             'model_type' => $model->getMorphClass(),
             'type' => $type,
         ]);
+        $like->setAttribute($this->userForeignKey(), $userId);
+        $like->save();
 
         return $like;
     }
@@ -255,6 +266,7 @@ class LikeManager implements LikeManagerContract
         return $userId;
     }
 
+    /** @return Builder<Like> */
     protected function newInteractionQuery(): Builder
     {
         /** @var class-string<Like> $interactionModel */
