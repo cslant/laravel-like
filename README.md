@@ -22,7 +22,7 @@ It is easy to use and can be customized to fit your needs.
 ## 📋 Requirements
 
 - PHP ^8.2
-- Laravel ^11.0|^12.0
+- Laravel ^11.0|^12.0|^13.0
 
 ## 📖 Official Documentation
 
@@ -110,6 +110,24 @@ $post->dislikesCountDigital();
 ```
 
 Use `HasLove` (and/or `UserHasInteraction` on the user model) for love-only surfaces.
+
+## ⚡ Performance
+
+All counts are a single `COUNT` query, and predicates use `EXISTS`, so calling counts or `isLiked()` on many models in a loop does **not** cause N+1 queries.
+
+Querying a user's liked models performs one query per distinct model type (a bounded cost inherent to polymorphic relations):
+
+```php
+$models = Like::userLikedModels($userId); // 1 + (number of model types) queries
+```
+
+When listing interactions, eager-load related models to avoid per-row queries:
+
+```php
+$user->userInteraction()   // hasMany, lazy-loads per model
+    ->with('model')        // eager-load the interactable model
+    ->get();
+```
 
 ## 📄 License
 

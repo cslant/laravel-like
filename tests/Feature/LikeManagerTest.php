@@ -4,7 +4,10 @@ use CSlant\LaravelLike\LikeManager;
 use CSlant\LaravelLike\Models\Like;
 use CSlant\LaravelLike\Tests\Models\Post;
 use CSlant\LaravelLike\Tests\Models\User;
+use CSlant\LaravelLike\Tests\Models\Video;
 use Illuminate\Auth\AuthenticationException;
+use Illuminate\Database\Eloquent\Model;
+use Illuminate\Support\Facades\DB;
 
 beforeEach(function () {
     $this->user = User::create();
@@ -119,6 +122,24 @@ test('userInteractions and userLikedModels scope by user', function () {
         ->and(app(LikeManager::class)->userLikedModels($this->user->id)->first()->is($this->post))->toBeTrue();
 });
 
+test('userLikedModels avoids per-model queries', function () {
+    $videos = collect(range(1, 3))->map(fn () => Video::create(['title' => 'T', 'duration' => 1]));
+    Post::create(['title' => 'Post Two']);
+
+    foreach ($videos as $video) {
+        app(LikeManager::class)->like($video, $this->user->id);
+    }
+    app(LikeManager::class)->like($this->post, $this->user->id);
+
+    DB::enableQueryLog();
+    $models = app(LikeManager::class)->userLikedModels($this->user->id);
+
+    expect($models)->toHaveCount(4)
+        ->and(DB::getQueryLog())->toHaveCount(3)
+        ->and($models->contains(fn (Model $m) => $m->is($this->post)))->toBeTrue()
+        ->and($models->map(fn (Model $m) => $m::class)->unique()->count())->toBe(2);
+});
+
 test('explicit userId works without auth', function () {
     auth()->logout();
     $user = User::create();
@@ -133,4 +154,12 @@ test('unauthenticated action throws AuthenticationException', function () {
 
     expect(fn () => app(LikeManager::class)->like($this->post))
         ->toThrow(AuthenticationException::class);
+});
+
+test('likes use integer ids unless is_uuids is enabled', function () {
+    expect((new Like())->usesUniqueIds())->toBeFalse();
+
+    config()->set('like.is_uuids', true);
+
+    expect((new Like())->usesUniqueIds())->toBeTrue();
 });

@@ -4,6 +4,7 @@ namespace CSlant\LaravelLike\Models;
 
 use CSlant\LaravelLike\Enums\InteractionTypeEnum;
 use CSlant\LaravelLike\Traits\InteractionRelationship;
+use Illuminate\Database\Eloquent\Concerns\HasUuids;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Relations\MorphTo;
@@ -28,6 +29,18 @@ use Illuminate\Support\Carbon;
  */
 class Like extends Model
 {
+    use HasUuids;
+
+    /**
+     * Determine whether the model uses unique ids.
+     * Honours the `like.is_uuids` config so integer auto-increment ids
+     * are used unless UUIDs are explicitly enabled.
+     */
+    public function usesUniqueIds(): bool
+    {
+        return (bool) config('like.is_uuids');
+    }
+
     protected $fillable = [
         'user_id',
         'model_id',
