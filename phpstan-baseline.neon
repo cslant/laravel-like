@@ -1,7 +1,547 @@
 parameters:
-    ignoreErrors:
-        - message: '#Cannot cast mixed to string#'
-          path: src/*
+	ignoreErrors:
+		-
+			message: '#^Method CSlant\\LaravelLike\\Contracts\\LikeManager\:\:userInteractions\(\) return type with generic class Illuminate\\Support\\Collection does not specify its types\: TKey, TValue$#'
+			identifier: missingType.generics
+			count: 1
+			path: src/Contracts/LikeManager.php
 
-        -
-          identifier: trait.unused
+		-
+			message: '#^Method CSlant\\LaravelLike\\Contracts\\LikeManager\:\:userLikedModels\(\) return type with generic class Illuminate\\Support\\Collection does not specify its types\: TKey, TValue$#'
+			identifier: missingType.generics
+			count: 1
+			path: src/Contracts/LikeManager.php
+
+		-
+			message: '#^PHPDoc tag @method for method CSlant\\LaravelLike\\Facades\\Like\:\:userInteractions\(\) return type contains generic class Illuminate\\Support\\Collection but does not specify its types\: TKey, TValue$#'
+			identifier: missingType.generics
+			count: 1
+			path: src/Facades/Like.php
+
+		-
+			message: '#^PHPDoc tag @method for method CSlant\\LaravelLike\\Facades\\Like\:\:userLikedModels\(\) return type contains generic class Illuminate\\Support\\Collection but does not specify its types\: TKey, TValue$#'
+			identifier: missingType.generics
+			count: 1
+			path: src/Facades/Like.php
+
+		-
+			message: '#^PHPDoc tag @method for method CSlant\\LaravelLike\\Facades\\Love\:\:userInteractions\(\) return type contains generic class Illuminate\\Support\\Collection but does not specify its types\: TKey, TValue$#'
+			identifier: missingType.generics
+			count: 1
+			path: src/Facades/Love.php
+
+		-
+			message: '#^PHPDoc tag @method for method CSlant\\LaravelLike\\Facades\\Love\:\:userLikedModels\(\) return type contains generic class Illuminate\\Support\\Collection but does not specify its types\: TKey, TValue$#'
+			identifier: missingType.generics
+			count: 1
+			path: src/Facades/Love.php
+
+		-
+			message: '#^Cannot cast mixed to string\.$#'
+			identifier: cast.string
+			count: 2
+			path: src/LikeManager.php
+
+		-
+			message: '#^Method CSlant\\LaravelLike\\LikeManager\:\:newInteractionQuery\(\) return type with generic class Illuminate\\Database\\Eloquent\\Builder does not specify its types\: TModel$#'
+			identifier: missingType.generics
+			count: 1
+			path: src/LikeManager.php
+
+		-
+			message: '#^Method CSlant\\LaravelLike\\LikeManager\:\:userInteractions\(\) return type with generic class Illuminate\\Support\\Collection does not specify its types\: TKey, TValue$#'
+			identifier: missingType.generics
+			count: 1
+			path: src/LikeManager.php
+
+		-
+			message: '#^Method CSlant\\LaravelLike\\LikeManager\:\:userLikedModels\(\) return type with generic class Illuminate\\Support\\Collection does not specify its types\: TKey, TValue$#'
+			identifier: missingType.generics
+			count: 1
+			path: src/LikeManager.php
+
+		-
+			message: '#^Parameter \#1 \$attributes of method Illuminate\\Database\\Eloquent\\Builder\<Illuminate\\Database\\Eloquent\\Model\>\:\:create\(\) expects array\<model property of Illuminate\\Database\\Eloquent\\Model, mixed\>, array\<string, mixed\> given\.$#'
+			identifier: argument.type
+			count: 1
+			path: src/LikeManager.php
+
+		-
+			message: '#^Parameter \#1 \$column of method Illuminate\\Database\\Eloquent\\Builder\<Illuminate\\Database\\Eloquent\\Model\>\:\:where\(\) expects array\<int\|model property of Illuminate\\Database\\Eloquent\\Model, mixed\>\|\(Closure\(Illuminate\\Database\\Eloquent\\Builder\|Illuminate\\Database\\Query\\Builder\)\: mixed\)\|Illuminate\\Contracts\\Database\\Query\\Expression\|model property of Illuminate\\Database\\Eloquent\\Model, ''model_id'' given\.$#'
+			identifier: argument.type
+			count: 6
+			path: src/LikeManager.php
+
+		-
+			message: '#^Parameter \#1 \$column of method Illuminate\\Database\\Eloquent\\Builder\<Illuminate\\Database\\Eloquent\\Model\>\:\:where\(\) expects array\<int\|model property of Illuminate\\Database\\Eloquent\\Model, mixed\>\|\(Closure\(Illuminate\\Database\\Query\\Builder\)\: mixed\)\|Illuminate\\Contracts\\Database\\Query\\Expression\|model property of Illuminate\\Database\\Eloquent\\Model, ''model_type'' given\.$#'
+			identifier: argument.type
+			count: 6
+			path: src/LikeManager.php
+
+		-
+			message: '#^Parameter \#1 \$column of method Illuminate\\Database\\Eloquent\\Builder\<Illuminate\\Database\\Eloquent\\Model\>\:\:where\(\) expects array\<int\|model property of Illuminate\\Database\\Eloquent\\Model, mixed\>\|\(Closure\(Illuminate\\Database\\Query\\Builder\)\: mixed\)\|Illuminate\\Contracts\\Database\\Query\\Expression\|model property of Illuminate\\Database\\Eloquent\\Model, ''type'' given\.$#'
+			identifier: argument.type
+			count: 5
+			path: src/LikeManager.php
+
+		-
+			message: '#^Cannot cast mixed to string\.$#'
+			identifier: cast.string
+			count: 2
+			path: src/Models/Like.php
+
+		-
+			message: '#^Access to an undefined property PHPUnit\\Framework\\TestCase\:\:\$post\.$#'
+			identifier: property.notFound
+			count: 6
+			path: tests/Feature/FacadeTest.php
+
+		-
+			message: '#^Call to an undefined method PHPUnit\\Framework\\TestCase\:\:actingAs\(\)\.$#'
+			identifier: method.notFound
+			count: 1
+			path: tests/Feature/FacadeTest.php
+
+		-
+			message: '#^Parameter \#1 \$attributes of static method Illuminate\\Database\\Eloquent\\Builder\<CSlant\\LaravelLike\\Tests\\Models\\Post\>\:\:create\(\) expects array\<model property of CSlant\\LaravelLike\\Tests\\Models\\Post, mixed\>, array\<string, string\> given\.$#'
+			identifier: argument.type
+			count: 1
+			path: tests/Feature/FacadeTest.php
+
+		-
+			message: '#^Unable to resolve the template type TValue in call to function expect$#'
+			identifier: argument.templateType
+			count: 1
+			path: tests/Feature/FacadeTest.php
+
+		-
+			message: '#^Parameter \#1 \$attributes of static method Illuminate\\Database\\Eloquent\\Builder\<CSlant\\LaravelLike\\Tests\\Models\\Post\>\:\:create\(\) expects array\<model property of CSlant\\LaravelLike\\Tests\\Models\\Post, mixed\>, array\<string, string\> given\.$#'
+			identifier: argument.type
+			count: 1
+			path: tests/Feature/FallbackTest.php
+
+		-
+			message: '#^Access to an undefined property PHPUnit\\Framework\\TestCase\:\:\$post\.$#'
+			identifier: property.notFound
+			count: 57
+			path: tests/Feature/LikeManagerTest.php
+
+		-
+			message: '#^Access to an undefined property PHPUnit\\Framework\\TestCase\:\:\$user\.$#'
+			identifier: property.notFound
+			count: 5
+			path: tests/Feature/LikeManagerTest.php
+
+		-
+			message: '#^Call to an undefined method PHPUnit\\Framework\\TestCase\:\:actingAs\(\)\.$#'
+			identifier: method.notFound
+			count: 1
+			path: tests/Feature/LikeManagerTest.php
+
+		-
+			message: '#^Cannot access property \$type on CSlant\\LaravelLike\\Models\\Like\|null\.$#'
+			identifier: property.nonObject
+			count: 3
+			path: tests/Feature/LikeManagerTest.php
+
+		-
+			message: '#^Cannot call method is\(\) on mixed\.$#'
+			identifier: method.nonObject
+			count: 1
+			path: tests/Feature/LikeManagerTest.php
+
+		-
+			message: '#^Parameter \#1 \$attributes of static method Illuminate\\Database\\Eloquent\\Builder\<CSlant\\LaravelLike\\Tests\\Models\\Post\>\:\:create\(\) expects array\<model property of CSlant\\LaravelLike\\Tests\\Models\\Post, mixed\>, array\<string, string\> given\.$#'
+			identifier: argument.type
+			count: 1
+			path: tests/Feature/LikeManagerTest.php
+
+		-
+			message: '#^Access to an undefined property PHPUnit\\Framework\\TestCase\:\:\$post\.$#'
+			identifier: property.notFound
+			count: 17
+			path: tests/Feature/ModelTraitTest.php
+
+		-
+			message: '#^Call to an undefined method PHPUnit\\Framework\\TestCase\:\:actingAs\(\)\.$#'
+			identifier: method.notFound
+			count: 1
+			path: tests/Feature/ModelTraitTest.php
+
+		-
+			message: '#^Parameter \#1 \$attributes of static method Illuminate\\Database\\Eloquent\\Builder\<CSlant\\LaravelLike\\Tests\\Models\\Post\>\:\:create\(\) expects array\<model property of CSlant\\LaravelLike\\Tests\\Models\\Post, mixed\>, array\<string, string\> given\.$#'
+			identifier: argument.type
+			count: 1
+			path: tests/Feature/ModelTraitTest.php
+
+		-
+			message: '#^Parameter \#1 \$attributes of static method Illuminate\\Database\\Eloquent\\Builder\<CSlant\\LaravelLike\\Tests\\Models\\Post\>\:\:create\(\) expects array\<model property of CSlant\\LaravelLike\\Tests\\Models\\Post, mixed\>, array\<string, string\> given\.$#'
+			identifier: argument.type
+			count: 1
+			path: tests/Feature/SmokeTest.php
+
+		-
+			message: '#^Call to function method_exists\(\) with CSlant\\LaravelLike\\Tests\\Models\\Podcast and ''likeTo'' will always evaluate to true\.$#'
+			identifier: function.alreadyNarrowedType
+			count: 1
+			path: tests/Feature/TraitCompositionTest.php
+
+		-
+			message: '#^Call to function method_exists\(\) with CSlant\\LaravelLike\\Tests\\Models\\Podcast and ''likesCount'' will always evaluate to true\.$#'
+			identifier: function.alreadyNarrowedType
+			count: 1
+			path: tests/Feature/TraitCompositionTest.php
+
+		-
+			message: '#^Call to function method_exists\(\) with CSlant\\LaravelLike\\Tests\\Models\\Podcast and ''loveTo'' will always evaluate to true\.$#'
+			identifier: function.alreadyNarrowedType
+			count: 1
+			path: tests/Feature/TraitCompositionTest.php
+
+		-
+			message: '#^Call to function method_exists\(\) with CSlant\\LaravelLike\\Tests\\Models\\Podcast and ''lovesCount'' will always evaluate to true\.$#'
+			identifier: function.alreadyNarrowedType
+			count: 1
+			path: tests/Feature/TraitCompositionTest.php
+
+		-
+			message: '#^Call to function method_exists\(\) with CSlant\\LaravelLike\\Tests\\Models\\Video and ''loveTo'' will always evaluate to true\.$#'
+			identifier: function.alreadyNarrowedType
+			count: 1
+			path: tests/Feature/TraitCompositionTest.php
+
+		-
+			message: '#^Parameter \#1 \$attributes of method Illuminate\\Database\\Eloquent\\Relations\\HasOneOrMany\<CSlant\\LaravelLike\\Tests\\Models\\User,Illuminate\\Database\\Eloquent\\Model,Illuminate\\Database\\Eloquent\\Collection\<int, CSlant\\LaravelLike\\Tests\\Models\\User\>\>\:\:create\(\) expects array\<model property of CSlant\\LaravelLike\\Tests\\Models\\User, mixed\>, array\<string, int\|string\> given\.$#'
+			identifier: argument.type
+			count: 1
+			path: tests/Feature/TraitCompositionTest.php
+
+		-
+			message: '#^Parameter \#1 \$attributes of static method Illuminate\\Database\\Eloquent\\Builder\<CSlant\\LaravelLike\\Tests\\Models\\Podcast\>\:\:create\(\) expects array\<model property of CSlant\\LaravelLike\\Tests\\Models\\Podcast, mixed\>, array\<string, string\> given\.$#'
+			identifier: argument.type
+			count: 1
+			path: tests/Feature/TraitCompositionTest.php
+
+		-
+			message: '#^Parameter \#1 \$attributes of static method Illuminate\\Database\\Eloquent\\Builder\<CSlant\\LaravelLike\\Tests\\Models\\Video\>\:\:create\(\) expects array\<model property of CSlant\\LaravelLike\\Tests\\Models\\Video, mixed\>, array\<string, int\|string\> given\.$#'
+			identifier: argument.type
+			count: 1
+			path: tests/Feature/TraitCompositionTest.php
+
+		-
+			message: '#^Call to private method count\(\) of parent class Illuminate\\Database\\Eloquent\\Relations\\MorphOneOrMany\<TRelatedModel of Illuminate\\Database\\Eloquent\\Model,TDeclaringModel of Illuminate\\Database\\Eloquent\\Model,Illuminate\\Database\\Eloquent\\Collection\<int, TRelatedModel of Illuminate\\Database\\Eloquent\\Model\>\>\.$#'
+			identifier: method.private
+			count: 3
+			path: tests/Models/Podcast.php
+
+		-
+			message: '#^Call to private method delete\(\) of parent class Illuminate\\Database\\Eloquent\\Relations\\MorphOneOrMany\<TRelatedModel of Illuminate\\Database\\Eloquent\\Model,TDeclaringModel of Illuminate\\Database\\Eloquent\\Model,Illuminate\\Database\\Eloquent\\Collection\<int, TRelatedModel of Illuminate\\Database\\Eloquent\\Model\>\>\.$#'
+			identifier: method.private
+			count: 2
+			path: tests/Models/Podcast.php
+
+		-
+			message: '#^Call to private method where\(\) of parent class Illuminate\\Database\\Eloquent\\Relations\\MorphOneOrMany\<TRelatedModel of Illuminate\\Database\\Eloquent\\Model,TDeclaringModel of Illuminate\\Database\\Eloquent\\Model,\(TRelatedModel of Illuminate\\Database\\Eloquent\\Model\)\|null\>\.$#'
+			identifier: method.private
+			count: 3
+			path: tests/Models/Podcast.php
+
+		-
+			message: '#^Call to private method where\(\) of parent class Illuminate\\Database\\Eloquent\\Relations\\MorphOneOrMany\<TRelatedModel of Illuminate\\Database\\Eloquent\\Model,TDeclaringModel of Illuminate\\Database\\Eloquent\\Model,Illuminate\\Database\\Eloquent\\Collection\<int, TRelatedModel of Illuminate\\Database\\Eloquent\\Model\>\>\.$#'
+			identifier: method.private
+			count: 7
+			path: tests/Models/Podcast.php
+
+		-
+			message: '#^Cannot cast mixed to string\.$#'
+			identifier: cast.string
+			count: 6
+			path: tests/Models/Podcast.php
+
+		-
+			message: '#^Method CSlant\\LaravelLike\\Tests\\Models\\Podcast\:\:dislikeTo\(\) return type with generic class Illuminate\\Database\\Eloquent\\Relations\\MorphOne does not specify its types\: TRelatedModel, TDeclaringModel$#'
+			identifier: missingType.generics
+			count: 1
+			path: tests/Models/Podcast.php
+
+		-
+			message: '#^Method CSlant\\LaravelLike\\Tests\\Models\\Podcast\:\:dislikesCountDigital\(\) should return string but returns int\|string\.$#'
+			identifier: return.type
+			count: 1
+			path: tests/Models/Podcast.php
+
+		-
+			message: '#^Method CSlant\\LaravelLike\\Tests\\Models\\Podcast\:\:dislikesTo\(\) return type with generic class Illuminate\\Database\\Eloquent\\Relations\\MorphMany does not specify its types\: TRelatedModel, TDeclaringModel$#'
+			identifier: missingType.generics
+			count: 1
+			path: tests/Models/Podcast.php
+
+		-
+			message: '#^Method CSlant\\LaravelLike\\Tests\\Models\\Podcast\:\:likeOne\(\) return type with generic class Illuminate\\Database\\Eloquent\\Relations\\MorphOne does not specify its types\: TRelatedModel, TDeclaringModel$#'
+			identifier: missingType.generics
+			count: 2
+			path: tests/Models/Podcast.php
+
+		-
+			message: '#^Method CSlant\\LaravelLike\\Tests\\Models\\Podcast\:\:likeTo\(\) return type with generic class Illuminate\\Database\\Eloquent\\Relations\\MorphOne does not specify its types\: TRelatedModel, TDeclaringModel$#'
+			identifier: missingType.generics
+			count: 1
+			path: tests/Models/Podcast.php
+
+		-
+			message: '#^Method CSlant\\LaravelLike\\Tests\\Models\\Podcast\:\:likes\(\) return type with generic class Illuminate\\Database\\Eloquent\\Relations\\MorphMany does not specify its types\: TRelatedModel, TDeclaringModel$#'
+			identifier: missingType.generics
+			count: 2
+			path: tests/Models/Podcast.php
+
+		-
+			message: '#^Method CSlant\\LaravelLike\\Tests\\Models\\Podcast\:\:likesCountDigital\(\) should return string but returns int\|string\.$#'
+			identifier: return.type
+			count: 1
+			path: tests/Models/Podcast.php
+
+		-
+			message: '#^Method CSlant\\LaravelLike\\Tests\\Models\\Podcast\:\:likesTo\(\) return type with generic class Illuminate\\Database\\Eloquent\\Relations\\MorphMany does not specify its types\: TRelatedModel, TDeclaringModel$#'
+			identifier: missingType.generics
+			count: 1
+			path: tests/Models/Podcast.php
+
+		-
+			message: '#^Method CSlant\\LaravelLike\\Tests\\Models\\Podcast\:\:loveTo\(\) return type with generic class Illuminate\\Database\\Eloquent\\Relations\\MorphOne does not specify its types\: TRelatedModel, TDeclaringModel$#'
+			identifier: missingType.generics
+			count: 1
+			path: tests/Models/Podcast.php
+
+		-
+			message: '#^Method CSlant\\LaravelLike\\Tests\\Models\\Podcast\:\:lovesCountDigital\(\) should return string but returns int\|string\.$#'
+			identifier: return.type
+			count: 1
+			path: tests/Models/Podcast.php
+
+		-
+			message: '#^Method CSlant\\LaravelLike\\Tests\\Models\\Podcast\:\:lovesTo\(\) return type with generic class Illuminate\\Database\\Eloquent\\Relations\\MorphMany does not specify its types\: TRelatedModel, TDeclaringModel$#'
+			identifier: missingType.generics
+			count: 1
+			path: tests/Models/Podcast.php
+
+		-
+			message: '#^Method CSlant\\LaravelLike\\Tests\\Models\\Podcast\:\:withInteractionBy\(\) return type with generic class Illuminate\\Database\\Eloquent\\Relations\\MorphMany does not specify its types\: TRelatedModel, TDeclaringModel$#'
+			identifier: missingType.generics
+			count: 2
+			path: tests/Models/Podcast.php
+
+		-
+			message: '#^Parameter \#1 \$column of method Illuminate\\Database\\Eloquent\\Builder\<Illuminate\\Database\\Eloquent\\Model\>\:\:where\(\) expects array\<int\|model property of Illuminate\\Database\\Eloquent\\Model, mixed\>\|\(Closure\(Illuminate\\Database\\Query\\Builder\)\: mixed\)\|Illuminate\\Contracts\\Database\\Query\\Expression\|model property of Illuminate\\Database\\Eloquent\\Model, ''type'' given\.$#'
+			identifier: argument.type
+			count: 8
+			path: tests/Models/Podcast.php
+
+		-
+			message: '#^Call to private method count\(\) of parent class Illuminate\\Database\\Eloquent\\Relations\\MorphOneOrMany\<TRelatedModel of Illuminate\\Database\\Eloquent\\Model,TDeclaringModel of Illuminate\\Database\\Eloquent\\Model,Illuminate\\Database\\Eloquent\\Collection\<int, TRelatedModel of Illuminate\\Database\\Eloquent\\Model\>\>\.$#'
+			identifier: method.private
+			count: 3
+			path: tests/Models/Post.php
+
+		-
+			message: '#^Call to private method delete\(\) of parent class Illuminate\\Database\\Eloquent\\Relations\\MorphOneOrMany\<TRelatedModel of Illuminate\\Database\\Eloquent\\Model,TDeclaringModel of Illuminate\\Database\\Eloquent\\Model,Illuminate\\Database\\Eloquent\\Collection\<int, TRelatedModel of Illuminate\\Database\\Eloquent\\Model\>\>\.$#'
+			identifier: method.private
+			count: 2
+			path: tests/Models/Post.php
+
+		-
+			message: '#^Call to private method where\(\) of parent class Illuminate\\Database\\Eloquent\\Relations\\MorphOneOrMany\<TRelatedModel of Illuminate\\Database\\Eloquent\\Model,TDeclaringModel of Illuminate\\Database\\Eloquent\\Model,\(TRelatedModel of Illuminate\\Database\\Eloquent\\Model\)\|null\>\.$#'
+			identifier: method.private
+			count: 3
+			path: tests/Models/Post.php
+
+		-
+			message: '#^Call to private method where\(\) of parent class Illuminate\\Database\\Eloquent\\Relations\\MorphOneOrMany\<TRelatedModel of Illuminate\\Database\\Eloquent\\Model,TDeclaringModel of Illuminate\\Database\\Eloquent\\Model,Illuminate\\Database\\Eloquent\\Collection\<int, TRelatedModel of Illuminate\\Database\\Eloquent\\Model\>\>\.$#'
+			identifier: method.private
+			count: 7
+			path: tests/Models/Post.php
+
+		-
+			message: '#^Cannot cast mixed to string\.$#'
+			identifier: cast.string
+			count: 6
+			path: tests/Models/Post.php
+
+		-
+			message: '#^Method CSlant\\LaravelLike\\Tests\\Models\\Post\:\:dislikeTo\(\) return type with generic class Illuminate\\Database\\Eloquent\\Relations\\MorphOne does not specify its types\: TRelatedModel, TDeclaringModel$#'
+			identifier: missingType.generics
+			count: 1
+			path: tests/Models/Post.php
+
+		-
+			message: '#^Method CSlant\\LaravelLike\\Tests\\Models\\Post\:\:dislikesCountDigital\(\) should return string but returns int\|string\.$#'
+			identifier: return.type
+			count: 1
+			path: tests/Models/Post.php
+
+		-
+			message: '#^Method CSlant\\LaravelLike\\Tests\\Models\\Post\:\:dislikesTo\(\) return type with generic class Illuminate\\Database\\Eloquent\\Relations\\MorphMany does not specify its types\: TRelatedModel, TDeclaringModel$#'
+			identifier: missingType.generics
+			count: 1
+			path: tests/Models/Post.php
+
+		-
+			message: '#^Method CSlant\\LaravelLike\\Tests\\Models\\Post\:\:likeOne\(\) return type with generic class Illuminate\\Database\\Eloquent\\Relations\\MorphOne does not specify its types\: TRelatedModel, TDeclaringModel$#'
+			identifier: missingType.generics
+			count: 2
+			path: tests/Models/Post.php
+
+		-
+			message: '#^Method CSlant\\LaravelLike\\Tests\\Models\\Post\:\:likeTo\(\) return type with generic class Illuminate\\Database\\Eloquent\\Relations\\MorphOne does not specify its types\: TRelatedModel, TDeclaringModel$#'
+			identifier: missingType.generics
+			count: 1
+			path: tests/Models/Post.php
+
+		-
+			message: '#^Method CSlant\\LaravelLike\\Tests\\Models\\Post\:\:likes\(\) return type with generic class Illuminate\\Database\\Eloquent\\Relations\\MorphMany does not specify its types\: TRelatedModel, TDeclaringModel$#'
+			identifier: missingType.generics
+			count: 2
+			path: tests/Models/Post.php
+
+		-
+			message: '#^Method CSlant\\LaravelLike\\Tests\\Models\\Post\:\:likesCountDigital\(\) should return string but returns int\|string\.$#'
+			identifier: return.type
+			count: 1
+			path: tests/Models/Post.php
+
+		-
+			message: '#^Method CSlant\\LaravelLike\\Tests\\Models\\Post\:\:likesTo\(\) return type with generic class Illuminate\\Database\\Eloquent\\Relations\\MorphMany does not specify its types\: TRelatedModel, TDeclaringModel$#'
+			identifier: missingType.generics
+			count: 1
+			path: tests/Models/Post.php
+
+		-
+			message: '#^Method CSlant\\LaravelLike\\Tests\\Models\\Post\:\:loveTo\(\) return type with generic class Illuminate\\Database\\Eloquent\\Relations\\MorphOne does not specify its types\: TRelatedModel, TDeclaringModel$#'
+			identifier: missingType.generics
+			count: 1
+			path: tests/Models/Post.php
+
+		-
+			message: '#^Method CSlant\\LaravelLike\\Tests\\Models\\Post\:\:lovesCountDigital\(\) should return string but returns int\|string\.$#'
+			identifier: return.type
+			count: 1
+			path: tests/Models/Post.php
+
+		-
+			message: '#^Method CSlant\\LaravelLike\\Tests\\Models\\Post\:\:lovesTo\(\) return type with generic class Illuminate\\Database\\Eloquent\\Relations\\MorphMany does not specify its types\: TRelatedModel, TDeclaringModel$#'
+			identifier: missingType.generics
+			count: 1
+			path: tests/Models/Post.php
+
+		-
+			message: '#^Method CSlant\\LaravelLike\\Tests\\Models\\Post\:\:withInteractionBy\(\) return type with generic class Illuminate\\Database\\Eloquent\\Relations\\MorphMany does not specify its types\: TRelatedModel, TDeclaringModel$#'
+			identifier: missingType.generics
+			count: 2
+			path: tests/Models/Post.php
+
+		-
+			message: '#^Parameter \#1 \$column of method Illuminate\\Database\\Eloquent\\Builder\<Illuminate\\Database\\Eloquent\\Model\>\:\:where\(\) expects array\<int\|model property of Illuminate\\Database\\Eloquent\\Model, mixed\>\|\(Closure\(Illuminate\\Database\\Query\\Builder\)\: mixed\)\|Illuminate\\Contracts\\Database\\Query\\Expression\|model property of Illuminate\\Database\\Eloquent\\Model, ''type'' given\.$#'
+			identifier: argument.type
+			count: 8
+			path: tests/Models/Post.php
+
+		-
+			message: '#^Cannot cast mixed to string\.$#'
+			identifier: cast.string
+			count: 2
+			path: tests/Models/User.php
+
+		-
+			message: '#^Method CSlant\\LaravelLike\\Tests\\Models\\User\:\:likes\(\) should return Illuminate\\Database\\Eloquent\\Relations\\HasMany\<CSlant\\LaravelLike\\Tests\\Models\\User, Illuminate\\Database\\Eloquent\\Model\> but returns Illuminate\\Database\\Eloquent\\Relations\\HasMany\<CSlant\\LaravelLike\\Models\\Like, Illuminate\\Database\\Eloquent\\Model\>\.$#'
+			identifier: return.type
+			count: 1
+			path: tests/Models/User.php
+
+		-
+			message: '#^Parameter \#1 \$column of method Illuminate\\Database\\Eloquent\\Builder\<CSlant\\LaravelLike\\Tests\\Models\\User\>\:\:where\(\) expects array\<int\|model property of CSlant\\LaravelLike\\Tests\\Models\\User, mixed\>\|\(Closure\(Illuminate\\Database\\Query\\Builder\)\: mixed\)\|Illuminate\\Contracts\\Database\\Query\\Expression\|model property of CSlant\\LaravelLike\\Tests\\Models\\User, ''type'' given\.$#'
+			identifier: argument.type
+			count: 1
+			path: tests/Models/User.php
+
+		-
+			message: '#^Call to private method count\(\) of parent class Illuminate\\Database\\Eloquent\\Relations\\MorphOneOrMany\<TRelatedModel of Illuminate\\Database\\Eloquent\\Model,TDeclaringModel of Illuminate\\Database\\Eloquent\\Model,Illuminate\\Database\\Eloquent\\Collection\<int, TRelatedModel of Illuminate\\Database\\Eloquent\\Model\>\>\.$#'
+			identifier: method.private
+			count: 1
+			path: tests/Models/Video.php
+
+		-
+			message: '#^Call to private method delete\(\) of parent class Illuminate\\Database\\Eloquent\\Relations\\MorphOneOrMany\<TRelatedModel of Illuminate\\Database\\Eloquent\\Model,TDeclaringModel of Illuminate\\Database\\Eloquent\\Model,Illuminate\\Database\\Eloquent\\Collection\<int, TRelatedModel of Illuminate\\Database\\Eloquent\\Model\>\>\.$#'
+			identifier: method.private
+			count: 1
+			path: tests/Models/Video.php
+
+		-
+			message: '#^Call to private method where\(\) of parent class Illuminate\\Database\\Eloquent\\Relations\\MorphOneOrMany\<TRelatedModel of Illuminate\\Database\\Eloquent\\Model,TDeclaringModel of Illuminate\\Database\\Eloquent\\Model,\(TRelatedModel of Illuminate\\Database\\Eloquent\\Model\)\|null\>\.$#'
+			identifier: method.private
+			count: 1
+			path: tests/Models/Video.php
+
+		-
+			message: '#^Call to private method where\(\) of parent class Illuminate\\Database\\Eloquent\\Relations\\MorphOneOrMany\<TRelatedModel of Illuminate\\Database\\Eloquent\\Model,TDeclaringModel of Illuminate\\Database\\Eloquent\\Model,Illuminate\\Database\\Eloquent\\Collection\<int, TRelatedModel of Illuminate\\Database\\Eloquent\\Model\>\>\.$#'
+			identifier: method.private
+			count: 3
+			path: tests/Models/Video.php
+
+		-
+			message: '#^Cannot cast mixed to string\.$#'
+			identifier: cast.string
+			count: 3
+			path: tests/Models/Video.php
+
+		-
+			message: '#^Method CSlant\\LaravelLike\\Tests\\Models\\Video\:\:likeOne\(\) return type with generic class Illuminate\\Database\\Eloquent\\Relations\\MorphOne does not specify its types\: TRelatedModel, TDeclaringModel$#'
+			identifier: missingType.generics
+			count: 1
+			path: tests/Models/Video.php
+
+		-
+			message: '#^Method CSlant\\LaravelLike\\Tests\\Models\\Video\:\:likes\(\) return type with generic class Illuminate\\Database\\Eloquent\\Relations\\MorphMany does not specify its types\: TRelatedModel, TDeclaringModel$#'
+			identifier: missingType.generics
+			count: 1
+			path: tests/Models/Video.php
+
+		-
+			message: '#^Method CSlant\\LaravelLike\\Tests\\Models\\Video\:\:loveTo\(\) return type with generic class Illuminate\\Database\\Eloquent\\Relations\\MorphOne does not specify its types\: TRelatedModel, TDeclaringModel$#'
+			identifier: missingType.generics
+			count: 1
+			path: tests/Models/Video.php
+
+		-
+			message: '#^Method CSlant\\LaravelLike\\Tests\\Models\\Video\:\:lovesCountDigital\(\) should return string but returns int\|string\.$#'
+			identifier: return.type
+			count: 1
+			path: tests/Models/Video.php
+
+		-
+			message: '#^Method CSlant\\LaravelLike\\Tests\\Models\\Video\:\:lovesTo\(\) return type with generic class Illuminate\\Database\\Eloquent\\Relations\\MorphMany does not specify its types\: TRelatedModel, TDeclaringModel$#'
+			identifier: missingType.generics
+			count: 1
+			path: tests/Models/Video.php
+
+		-
+			message: '#^Method CSlant\\LaravelLike\\Tests\\Models\\Video\:\:withInteractionBy\(\) return type with generic class Illuminate\\Database\\Eloquent\\Relations\\MorphMany does not specify its types\: TRelatedModel, TDeclaringModel$#'
+			identifier: missingType.generics
+			count: 1
+			path: tests/Models/Video.php
+
+		-
+			message: '#^Parameter \#1 \$column of method Illuminate\\Database\\Eloquent\\Builder\<Illuminate\\Database\\Eloquent\\Model\>\:\:where\(\) expects array\<int\|model property of Illuminate\\Database\\Eloquent\\Model, mixed\>\|\(Closure\(Illuminate\\Database\\Query\\Builder\)\: mixed\)\|Illuminate\\Contracts\\Database\\Query\\Expression\|model property of Illuminate\\Database\\Eloquent\\Model, ''type'' given\.$#'
+			identifier: argument.type
+			count: 3
+			path: tests/Models/Video.php
+
+		-
+			message: '#^Call to an undefined method Pest\\PendingCalls\\TestCall\|Pest\\Support\\HigherOrderTapProxy\:\:with\(\)\.$#'
+			identifier: method.notFound
+			count: 1
+			path: tests/Unit/EnumTest.php
+
+		-
+			message: '#^Call to an undefined method Pest\\PendingCalls\\TestCall\|Pest\\Support\\HigherOrderTapProxy\:\:with\(\)\.$#'
+			identifier: method.notFound
+			count: 1
+			path: tests/Unit/HelperTest.php

@@ -186,7 +186,7 @@ class LikeManager implements LikeManagerContract
 
     protected function findInteraction(Model $model, int $userId): ?Like
     {
-        /** @var Like|null $like */
+        /** @var null|Like $like */
         $like = $this->newInteractionQuery()
             ->where($this->userForeignKey(), $userId)
             ->where('model_id', $model->getKey())
@@ -198,7 +198,7 @@ class LikeManager implements LikeManagerContract
 
     protected function findInteractionByType(Model $model, int $userId, InteractionTypeEnum $type): ?Like
     {
-        /** @var Like|null $like */
+        /** @var null|Like $like */
         $like = $this->newInteractionQuery()
             ->where($this->userForeignKey(), $userId)
             ->where('model_id', $model->getKey())
@@ -275,7 +275,7 @@ class LikeManager implements LikeManagerContract
 
     protected function assertModel(Model $model): void
     {
-        if (! $model->exists) {
+        if (!$model->exists) {
             throw new InvalidArgumentException('The model must be saved before it can be interacted with.');
         }
     }

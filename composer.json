@@ -1,6 +1,6 @@
 {
   "name": "cslant/laravel-like",
-  "description": "A package providing 👍 like, 👎 dislike and love ❤️ or unlike ✋features features for Laravel applications.",
+  "description": "A package providing like, dislike, love and unlike interaction features for Laravel applications.",
   "keywords": [
     "cslant",
     "laravel",

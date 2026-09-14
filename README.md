@@ -21,13 +21,8 @@ It is easy to use and can be customized to fit your needs.
 
 ## 📋 Requirements
 
-- PHP ^8.1
-- Laravel ^9.0|^10.0|^11.0
-
-| Is Maintain        | PHP  | Laravel            | Blog Core |
-|--------------------|------|--------------------|-----------|
-| :white_check_mark: | ^8.2 | ^11.0, ^12.0       | v2.x      |
-| :x:                | ^8.1 | ^9.0, ^10.0, ^11.0 | v1.x      |
+- PHP ^8.2
+- Laravel ^11.0|^12.0
 
 ## 📖 Official Documentation
 
@@ -46,7 +41,7 @@ composer require cslant/laravel-like
 You can publish all the necessary configuration and migration files by running the following command:
 
 ```bash
-php artisan vendor:publish --provider="CSlant\LaravelLike\LikeServiceProvider"
+php artisan vendor:publish --provider="CSlant\LaravelLike\Providers\LikeServiceProvider"
 ```
 
 After the configuration file has been published, you can run the migration:
@@ -54,6 +49,67 @@ After the configuration file has been published, you can run the migration:
 ```bash
 php artisan migrate
 ```
+
+## 🛠️ Usage
+
+### Facade
+
+```php
+use CSlant\LaravelLike\Facades\Like;
+
+$post->like();               // or Like::like($post)
+Like::dislike($post);
+Like::love($post);
+Like::unlike($post);
+Like::unlove($post);
+Like::toggle($post);
+
+Like::isLiked($post);        // bool
+Like::isDisliked($post);     // bool
+Like::isLoved($post);        // bool
+
+Like::likesCount($post);     // int
+Like::dislikesCount($post);  // int
+Like::lovesCount($post);     // int
+```
+
+By default the acting user is resolved via `auth()->id()`. Pass an explicit user id as the second argument to override:
+
+```php
+Like::like($post, $userId);
+```
+
+### Model traits
+
+Add `HasLike` to an interactable model:
+
+```php
+use CSlant\LaravelLike\HasLike;
+
+class Post extends Model
+{
+    use HasLike;
+}
+```
+
+Then:
+
+```php
+$post = Post::find(1);
+
+$post->like();
+$post->dislike();
+$post->love();
+$post->toggle();
+
+$post->isLiked();
+$post->isLikedBy($userId);
+
+$post->likesCount();
+$post->dislikesCountDigital();
+```
+
+Use `HasLove` (and/or `UserHasInteraction` on the user model) for love-only surfaces.
 
 ## 📄 License
 

@@ -6,7 +6,7 @@ use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\MorphMany;
 
 /**
- * Trait LoveScopes
+ * Trait LoveCount
  *
  * @package CSlant\LaravelLike\Traits\Love
  * @mixin Model
