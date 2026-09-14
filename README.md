@@ -54,23 +54,27 @@ php artisan migrate
 
 ### Facade
 
+`Like` and `Love` both proxy the same `LikeManager` singleton, kept as separate facades so each stays focused on its own domain (like/dislike vs. love):
+
 ```php
 use CSlant\LaravelLike\Facades\Like;
+use CSlant\LaravelLike\Facades\Love;
 
 $post->like();               // or Like::like($post)
 Like::dislike($post);
-Like::love($post);
 Like::unlike($post);
-Like::unlove($post);
 Like::toggle($post);
 
 Like::isLiked($post);        // bool
 Like::isDisliked($post);     // bool
-Like::isLoved($post);        // bool
 
 Like::likesCount($post);     // int
 Like::dislikesCount($post);  // int
-Like::lovesCount($post);     // int
+
+Love::love($post);            // or $post->love()
+Love::unlove($post);
+Love::isLoved($post);        // bool
+Love::lovesCount($post);     // int
 ```
 
 By default the acting user is resolved via `auth()->id()`. Pass an explicit user id as the second argument to override:
@@ -113,7 +117,26 @@ Use `HasLove` (and/or `UserHasInteraction` on the user model) for love-only surf
 
 ## ⚡ Performance
 
-All counts are a single `COUNT` query, and predicates use `EXISTS`, so calling counts or `isLiked()` on many models in a loop does **not** cause N+1 queries.
+All counts are a single `COUNT` query, and predicates use `EXISTS`, so a single call never causes an N+1. But calling `likesCount()` or `isLiked()` **in a loop** over a list still does — use the batch APIs instead:
+
+```php
+use CSlant\LaravelLike\Facades\Like;
+use CSlant\LaravelLike\Enums\InteractionTypeEnum;
+
+$posts = Post::limit(50)->get();
+
+// One query total instead of one per post
+$counts = Like::likeCountsFor($posts, InteractionTypeEnum::LIKE); // [postId => count]
+
+// One query total for the current user's state across all posts
+$interactions = Like::userInteractionsFor($posts, auth()->id());  // keyed by "morphClass:modelId"
+```
+
+Or, when you're already building the query, prefer Eloquent's own `withCount()`:
+
+```php
+$posts = Post::withCount(['likesTo as likes_count', 'dislikesTo as dislikes_count'])->get();
+```
 
 Querying a user's liked models performs one query per distinct model type (a bounded cost inherent to polymorphic relations):
 
@@ -124,10 +147,16 @@ $models = Like::userLikedModels($userId); // 1 + (number of model types) queries
 When listing interactions, eager-load related models to avoid per-row queries:
 
 ```php
-$user->userInteraction()   // hasMany, lazy-loads per model
+$user->likes()             // hasMany, from the UserHasInteraction trait
     ->with('model')        // eager-load the interactable model
     ->get();
 ```
+
+Read-heavy counts can also be cached — set `cache.enabled` to `true` in `config/like.php` and the package invalidates it automatically on every write. See the [Performance docs](https://docs.cslant.com/laravel-like/usage/performance) for the full picture.
+
+## 🤖 AI agent skill
+
+This repo ships a [Claude Code skill](.claude/skills/laravel-like/SKILL.md) summarizing safe usage patterns (the batch APIs, the N+1 pitfalls, the facade split). If your project uses this package and you use Claude Code, copy `.claude/skills/laravel-like/` from this repo into your own project's `.claude/skills/` directory so your AI assistant applies it automatically.
 
 ## 📄 License
 
