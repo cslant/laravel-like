@@ -2,6 +2,19 @@
 
 Here you can see the full list of changes between each Laravel Like release.
 
+## v2.1.0 - 2026-09-14
+
+### What's Changed
+
+- feat: add LikeManager service and Like/Love facades with `like`, `dislike`, `love`, `unlike`, `unlove`, `unDislike`, `toggle` actions
+- feat: expose interaction actions on interactable models via HasLike/HasLove
+- fix: correct config fallback when `like.interaction_model` or `like.users.model` is not set
+- refactor: deduplicate `forgetInteractions*` into shared ForgetsInteractions trait
+- refactor: rename LoveScope trait to LoveScopes
+- test: add testbench + pest suite covering manager, facades, traits, enum, helper, config
+
+**Full Changelog**: https://github.com/cslant/laravel-like/compare/v2.0.0...v2.1.0
+
 ## v2.0.0 - 2025-04-14
 
 ### What's Changed
