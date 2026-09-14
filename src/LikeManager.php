@@ -10,6 +10,7 @@ use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\Collection;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Cache;
 use Illuminate\Support\Facades\DB;
 use InvalidArgumentException;
 
@@ -52,14 +53,27 @@ class LikeManager implements LikeManagerContract
         $current = $this->findInteraction($model, $userId);
 
         if ($current === null) {
-            return $this->createInteraction($model, $userId, InteractionTypeEnum::LIKE);
+            $created = $this->createInteraction($model, $userId, InteractionTypeEnum::LIKE);
+            $this->forgetCounts($model);
+
+            return $created;
         }
 
-        return match (true) {
-            $current->type->isLike() => $this->removeRecord($current) ? null : $current,
-            $current->type->isDislike() => $this->updateType($current, InteractionTypeEnum::LIKE),
-            default => $current,
-        };
+        if ($current->type->isDislike()) {
+            $updated = $this->updateType($current, InteractionTypeEnum::LIKE);
+            $this->forgetCounts($model);
+
+            return $updated;
+        }
+
+        if ($current->type->isLike()) {
+            $removed = $this->removeRecord($current);
+            $this->forgetCounts($model);
+
+            return $removed ? null : $current;
+        }
+
+        return $current;
     }
 
     public function isLiked(Model $model, ?int $userId = null): bool
@@ -138,6 +152,58 @@ class LikeManager implements LikeManagerContract
         return new Collection($models);
     }
 
+    /**
+     * @param  Collection<int, Model>  $models
+     *
+     * @return array<int|string, int>
+     */
+    public function likeCountsFor(Collection $models, InteractionTypeEnum $type = InteractionTypeEnum::LIKE): array
+    {
+        $counts = [];
+
+        $models->groupBy(fn (Model $model) => $model->getMorphClass())
+            ->each(function (Collection $group, string $modelType) use ($type, &$counts) {
+                $this->newInteractionQuery()
+                    ->toBase()
+                    ->where('model_type', $modelType)
+                    ->where('type', $type)
+                    ->whereIn('model_id', $group->map(fn (Model $model) => $model->getKey()))
+                    ->selectRaw('model_id, count(*) as aggregate')
+                    ->groupBy('model_id')
+                    ->get()
+                    ->each(function (\stdClass $row) use (&$counts) {
+                        $counts[$row->model_id] = is_numeric($row->aggregate) ? (int) $row->aggregate : 0;
+                    });
+            });
+
+        return $counts;
+    }
+
+    /**
+     * @param  Collection<int, Model>  $models
+     *
+     * @return Collection<string, Like>
+     */
+    public function userInteractionsFor(Collection $models, ?int $userId = null): Collection
+    {
+        $userId = $this->resolveUserId($userId);
+        $result = new Collection();
+
+        $models->groupBy(fn (Model $model) => $model->getMorphClass())
+            ->each(function (Collection $group, string $modelType) use ($userId, &$result) {
+                $this->newInteractionQuery()
+                    ->where($this->userForeignKey(), $userId)
+                    ->where('model_type', $modelType)
+                    ->whereIn('model_id', $group->map(fn (Model $model) => $model->getKey()))
+                    ->get()
+                    ->each(function (Like $like) use ($modelType, &$result) {
+                        $result->put($modelType.':'.$like->model_id, $like);
+                    });
+            });
+
+        return $result;
+    }
+
     protected function setInteraction(Model $model, InteractionTypeEnum $type, ?int $userId): Like
     {
         $this->assertModel($model);
@@ -152,7 +218,10 @@ class LikeManager implements LikeManagerContract
 
             $this->clearOtherTypes($model, $userId, $type);
 
-            return $this->createInteraction($model, $userId, $type);
+            $created = $this->createInteraction($model, $userId, $type);
+            $this->forgetCounts($model);
+
+            return $created;
         });
     }
 
@@ -163,8 +232,13 @@ class LikeManager implements LikeManagerContract
 
         return DB::transaction(function () use ($model, $type, $userId) {
             $existing = $this->findInteractionByType($model, $userId, $type);
+            $removed = $existing !== null && $this->removeRecord($existing);
 
-            return $existing !== null && $this->removeRecord($existing);
+            if ($removed) {
+                $this->forgetCounts($model);
+            }
+
+            return $removed;
         });
     }
 
@@ -185,11 +259,48 @@ class LikeManager implements LikeManagerContract
     {
         $this->assertModel($model);
 
-        return $this->newInteractionQuery()
+        $query = fn (): int => $this->newInteractionQuery()
             ->where('model_id', $model->getKey())
             ->where('model_type', $model->getMorphClass())
             ->where('type', $type)
             ->count();
+
+        if (!$this->cacheEnabled()) {
+            return $query();
+        }
+
+        return (int) Cache::remember($this->countCacheKey($model, $type), $this->cacheTtl(), $query);
+    }
+
+    protected function cacheEnabled(): bool
+    {
+        return (bool) config('like.cache.enabled', false);
+    }
+
+    protected function cacheTtl(): int
+    {
+        $ttl = config('like.cache.ttl');
+
+        return is_numeric($ttl) ? (int) $ttl : 60;
+    }
+
+    protected function countCacheKey(Model $model, InteractionTypeEnum $type): string
+    {
+        return sprintf('like:count:%s:%s:%s', $type->value, $model->getMorphClass(), (string) $model->getKey());
+    }
+
+    /**
+     * Invalidate the cached per-type counts for a model after its interactions change.
+     */
+    protected function forgetCounts(Model $model): void
+    {
+        if (!$this->cacheEnabled()) {
+            return;
+        }
+
+        foreach (InteractionTypeEnum::getValues() as $type) {
+            Cache::forget($this->countCacheKey($model, $type));
+        }
     }
 
     protected function findInteraction(Model $model, int $userId): ?Like

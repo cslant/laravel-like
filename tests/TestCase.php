@@ -59,5 +59,6 @@ abstract class TestCase extends Orchestra
         });
 
         (include __DIR__.'/../migrations/2024_09_23_163615_create_likes_table.php')->up();
+        (include __DIR__.'/../migrations/2025_09_15_000000_add_type_lookup_index_to_likes_table.php')->up();
     }
 }

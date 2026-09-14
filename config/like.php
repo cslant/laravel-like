@@ -33,4 +33,22 @@ return [
          */
         'foreign_key' => 'user_id',
     ],
+
+    /*
+     * Caching for per-type interaction counts (likesCount, dislikesCount, lovesCount).
+     * Counts are read far more often than they change, so caching them cuts repeated
+     * COUNT queries on hot paths (feeds, listings). Disabled by default to keep the
+     * package's out-of-the-box behaviour always consistent; enable it once your cache
+     * store is configured.
+     */
+    'cache' => [
+        'enabled' => false,
+
+        /*
+         * Time-to-live in seconds for a cached count. The cache is also actively
+         * invalidated whenever an interaction is created, moved, or removed, so this
+         * TTL is only a safety net.
+         */
+        'ttl' => 60,
+    ],
 ];

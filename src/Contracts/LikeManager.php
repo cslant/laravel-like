@@ -2,6 +2,7 @@
 
 namespace CSlant\LaravelLike\Contracts;
 
+use CSlant\LaravelLike\Enums\InteractionTypeEnum;
 use CSlant\LaravelLike\Models\Like;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\Collection;
@@ -41,4 +42,18 @@ interface LikeManager
 
     /** @return Collection<int, Model> */
     public function userLikedModels(?int $userId = null): Collection;
+
+    /**
+     * @param  Collection<int, Model>  $models
+     *
+     * @return array<int|string, int> counts keyed by the model's primary key
+     */
+    public function likeCountsFor(Collection $models, InteractionTypeEnum $type = InteractionTypeEnum::LIKE): array;
+
+    /**
+     * @param  Collection<int, Model>  $models
+     *
+     * @return Collection<string, Like> keyed by "{morphClass}:{modelKey}"
+     */
+    public function userInteractionsFor(Collection $models, ?int $userId = null): Collection;
 }
