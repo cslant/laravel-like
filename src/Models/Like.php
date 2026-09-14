@@ -47,7 +47,7 @@ class Like extends Model
      */
     public function user(): BelongsTo
     {
-        $userModel = (string) (config('like.users.model') ?? config('auth.providers.users.model'));
+        $userModel = (string) (config('like.users.model') ?: config('auth.providers.users.model'));
 
         if (!is_a($userModel, Model::class, true)) {
             throw new \InvalidArgumentException("The user model must be a valid Eloquent model class.");

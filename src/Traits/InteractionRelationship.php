@@ -26,7 +26,7 @@ trait InteractionRelationship
      */
     public function likeOne(): MorphOne
     {
-        return $this->morphOne((string) config('like.interaction_model') ?? Like::class, 'model');
+        return $this->morphOne((string) (config('like.interaction_model') ?? Like::class), 'model');
     }
 
     /**
@@ -36,7 +36,7 @@ trait InteractionRelationship
      */
     public function likes(): MorphMany
     {
-        return $this->morphMany((string) config('like.interaction_model') ?? Like::class, 'model');
+        return $this->morphMany((string) (config('like.interaction_model') ?? Like::class), 'model');
     }
 
     /**

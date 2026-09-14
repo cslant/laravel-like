@@ -25,9 +25,9 @@ return [
     'users' => [
         /*
          * User model class.
-         * Use this to set the user model class for the user relationship.
+         * When null, the package falls back to config('auth.providers.users.model').
          */
-        'model' => 'App\Models\User',
+        'model' => null,
 
         /*
          * User tables foreign key name.
