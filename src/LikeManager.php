@@ -152,9 +152,12 @@ class LikeManager implements LikeManagerContract
     {
         $this->assertModel($model);
         $userId = $this->resolveUserId($userId);
-        $existing = $this->findInteractionByType($model, $userId, $type);
 
-        return $existing !== null ? $this->removeRecord($existing) : false;
+        return DB::transaction(function () use ($model, $type, $userId) {
+            $existing = $this->findInteractionByType($model, $userId, $type);
+
+            return $existing !== null ? $this->removeRecord($existing) : false;
+        });
     }
 
     protected function hasInteraction(Model $model, InteractionTypeEnum $type, ?int $userId): bool
