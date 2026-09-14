@@ -15,7 +15,13 @@ if (!function_exists('count_digital')) {
         }
 
         if ($count < 1000000) {
-            return round($count / 1000, 1) . 'K';
+            $thousands = $count / 1000;
+
+            if ($thousands >= 999.95) {
+                return '1M';
+            }
+
+            return round($thousands, 1) . 'K';
         }
 
         return round($count / 1000000, 1) . 'M';
