@@ -2,6 +2,8 @@
 
 namespace CSlant\LaravelLike\Providers;
 
+use CSlant\LaravelLike\Contracts\LikeManager as LikeManagerContract;
+use CSlant\LaravelLike\LikeManager;
 use Illuminate\Support\ServiceProvider;
 
 class LikeServiceProvider extends ServiceProvider
@@ -20,16 +22,17 @@ class LikeServiceProvider extends ServiceProvider
     public function register(): void
     {
         $this->registerConfigs();
+        $this->registerLikeManager();
     }
 
     /**
      * Get the services provided by the provider.
      *
-     * @return null|array<string>
+     * @return array<string>
      */
-    public function provides(): ?array
+    public function provides(): array
     {
-        return ['like'];
+        return [LikeManagerContract::class, 'like'];
     }
 
     /**
@@ -39,6 +42,15 @@ class LikeServiceProvider extends ServiceProvider
     {
         $configPath = __DIR__.'/../../config/like.php';
         $this->mergeConfigFrom($configPath, 'like');
+    }
+
+    /**
+     * Register the like manager as a singleton.
+     */
+    protected function registerLikeManager(): void
+    {
+        $this->app->singleton(LikeManagerContract::class, LikeManager::class);
+        $this->app->alias(LikeManagerContract::class, 'like');
     }
 
     /**
