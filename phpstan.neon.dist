@@ -5,12 +5,12 @@ parameters:
     level: 9
     paths:
         - src
-        - tests
         - common
     parallel:
         maximumNumberOfProcesses: 4
     tmpDir: build/phpstan
     checkOctaneCompatibility: true
     checkModelProperties: true
+    treatPhpDocTypesAsCertain: false
     bootstrapFiles:
         - vendor/autoload.php
